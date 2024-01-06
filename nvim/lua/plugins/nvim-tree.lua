@@ -10,6 +10,9 @@ return {
         local WIDTH_RATIO = 0.5
         local HEIGHT_RATIO = 0.8
         require("nvim-tree").setup({
+            git = {
+                enable = false,
+            },
             view = {
                 float = {
                     enable = true,

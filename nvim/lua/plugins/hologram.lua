@@ -1,8 +1,9 @@
 return {
---    "edluffy/hologram.nvim",
---    config = function()
---        require("hologram").setup({
---            autodisplay = true
---        })
---    end
+    "edluffy/hologram.nvim",
+    enabled = false,
+    config = function()
+        require("hologram").setup({
+            autodisplay = true
+        })
+    end
 }

@@ -4,7 +4,7 @@ return {
     enabled = true,
     config = function()
         vim.o.timeout = true
-        vim.o.timeoutlen = 300
+        vim.o.timeoutlen = 0--300
         require("which-key").register({}, {})
     end,
     opts = {
