@@ -8,11 +8,11 @@ return {
         },
         config = function()
             local builtin = require("telescope.builtin")
-            vim.keymap.set('n', '<leader>ff', builtin.find_files)--, { desc = "Find files" })
-            vim.keymap.set('n', '<leader>fw', builtin.live_grep)--, { desc = "Live grep" })
+            vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
+            vim.keymap.set('n', '<leader>fw', builtin.live_grep, { desc = "Live grep" })
 
             require("telescope").load_extension("undo")
-            vim.keymap.set('n', '<leader>u', "<cmd>Telescope undo<cr>")--, { desc = "Undo tree" })
+            vim.keymap.set('n', '<leader>u', "<cmd>Telescope undo<cr>", { desc = "Undo tree" })
         end
     },
     {
