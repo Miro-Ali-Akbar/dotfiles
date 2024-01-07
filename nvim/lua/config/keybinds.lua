@@ -6,6 +6,10 @@ vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Right" })
 vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Down" })
 vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Up" })
 
+-- Movement between lines for hardwrap
+vim.keymap.set('n', 'j', 'gj')
+vim.keymap.set('n', 'k', 'gk')
+
 -- Movement between windows
 vim.keymap.set('n', '<c-h>', ':wincmd h<cr>', { desc = "Window left" })
 vim.keymap.set('n', '<c-l>', ':wincmd l<cr>', { desc = "Window right" })
