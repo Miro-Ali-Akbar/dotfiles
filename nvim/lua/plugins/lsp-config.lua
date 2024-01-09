@@ -8,11 +8,18 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
+        lazy = false,
+        opts = {
+            auto_install = true,
+        },
         config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls" }
+            local lspconfig = require('lspconfig')
+            require('mason-lspconfig').setup_handlers({
+            function(server)
+                lspconfig[server].setup({})
+            end,
             })
-        end
+        end,
     },
     {
         "neovim/nvim-lspconfig",
