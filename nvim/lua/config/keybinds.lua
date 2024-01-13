@@ -18,3 +18,6 @@ vim.keymap.set('n', "<c-k>", ":wincmd k<cr>", { desc = "Window up" })
 
 -- Line wrap
 vim.keymap.set('n', "<leader>cw", "<cmd> set wrap! <cr>", { desc = "Toggle screen wrap" })
+
+-- Vim search
+vim.keymap.set('n', "<leader>cs", "<cmd>nohlsearch<CR>", { desc = "Clear serach" })
