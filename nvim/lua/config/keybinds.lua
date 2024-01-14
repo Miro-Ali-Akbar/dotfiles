@@ -20,4 +20,7 @@ vim.keymap.set('n', "<c-k>", ":wincmd k<cr>", { desc = "Window up" })
 vim.keymap.set('n', "<leader>cw", "<cmd> set wrap! <cr>", { desc = "Toggle screen wrap" })
 
 -- Vim search
-vim.keymap.set('n', "<leader>cs", "<cmd>nohlsearch<CR>", { desc = "Clear serach" })
+vim.keymap.set('n', "<c-n>", "<cmd>nohlsearch<CR>", { desc = "Clear serach" })
+
+-- Vim replace
+vim.keymap.set('n', '<leader>sr', [[:%s/]], { desc = "replace all" })

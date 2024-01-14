@@ -15,5 +15,8 @@ vim.cmd("set wrap linebreak")
 vim.cmd("set signcolumn=yes")
 -- Sets buffer for curser between border as scroll_of_buffer
 vim.cmd("set scrolloff=5")
--- Vim search
+-- Vim search to be case sensitive when relevent
+vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
+-- Vim replace - Becomes responsive
+vim.cmd("set inccommand=nosplit")
