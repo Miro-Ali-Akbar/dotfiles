@@ -16,6 +16,10 @@ vim.keymap.set('n', "<c-l>", ":wincmd l<cr>", { desc = "Window right" })
 vim.keymap.set('n', "<c-j>", ":wincmd j<cr>", { desc = "Window down" })
 vim.keymap.set('n', "<c-k>", ":wincmd k<cr>", { desc = "Window up" })
 
+-- Movement between buffers
+vim.keymap.set('n', '<Tab>', "<cmd> bn <cr>", { desc = "Buffer next"})
+vim.keymap.set('n', '<S-Tab>', "<cmd> bp <cr>", { desc = "Buffer previous"})
+
 -- Line wrap
 vim.keymap.set('n', "<leader>cw", "<cmd> set wrap! <cr>", { desc = "Toggle screen wrap" })
 
