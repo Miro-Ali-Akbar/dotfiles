@@ -20,3 +20,5 @@ vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
 -- Vim replace - Becomes responsive
 vim.cmd("set inccommand=nosplit")
+-- Makes nvim faster somehow?
+vim.loader.enable()
