@@ -23,6 +23,9 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies = {
+            "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+        },
         lazy = false,
         config = function()
             local lspconfig = require("lspconfig")
@@ -36,6 +39,9 @@ return {
             vim.keymap.set('n', '<leader>lf', function()
                 vim.lsp.buf.format { async = true }
             end, { desc = "LSP format" })
+
+            require('toggle_lsp_diagnostics').init()
+            vim.keymap.set('n', '<leader>cl', "<cmd> ToggleDiag <cr>", { desc = "Lsp toggle", silent = true })
         end
     }
 }
