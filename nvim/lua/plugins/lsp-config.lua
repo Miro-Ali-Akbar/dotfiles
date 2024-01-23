@@ -38,6 +38,7 @@ return {
             vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, { desc = "LSP references" })
             vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, { desc = "LSP rename" })
             vim.keymap.set({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action, { desc = "LSP code action" })
+            vim.keymap.set('n', '<leader>lD', vim.diagnostic.open_float, { desc = "LSP diagnostic" })
             vim.keymap.set('n', '<leader>lf', function()
                 vim.lsp.buf.format { async = true }
             end, { desc = "LSP format" })
