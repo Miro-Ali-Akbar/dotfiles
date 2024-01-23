@@ -20,6 +20,9 @@ vim.keymap.set('n', "<c-k>", ":wincmd k<cr>", { desc = "Window up" })
 vim.keymap.set('n', '<Tab>', "<cmd> bn <cr>", { desc = "Buffer next"})
 vim.keymap.set('n', '<S-Tab>', "<cmd> bp <cr>", { desc = "Buffer previous"})
 
+-- Buffer close
+vim.keymap.set('n', '<leader>sc', "<cmd> bd <cr>", { desc = "Buffer close"})
+
 -- Line wrap
 vim.keymap.set('n', "<leader>cw", "<cmd> set wrap! <cr>", { desc = "Toggle screen wrap" })
 
