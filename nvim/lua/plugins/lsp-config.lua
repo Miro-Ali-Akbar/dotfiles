@@ -15,19 +15,21 @@ return {
         config = function()
             local lspconfig = require('lspconfig')
             require('mason-lspconfig').setup_handlers({
-            function(server)
-                lspconfig[server].setup({})
-            end,
+                function(server)
+                    lspconfig[server].setup({})
+                end,
             })
         end,
     },
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+            "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+            "folke/neodev.nvim",
         },
         lazy = false,
         config = function()
+            require("neodev").setup({})
             local lspconfig = require("lspconfig")
             lspconfig.lua_ls.setup({})
 
