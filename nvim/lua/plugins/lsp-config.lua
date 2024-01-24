@@ -25,7 +25,6 @@ return {
         "neovim/nvim-lspconfig",
         dependencies = {
             "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
-            "folke/neodev.nvim",
         },
         lazy = false,
         config = function()
@@ -45,6 +44,14 @@ return {
 
             require("toggle_lsp_diagnostics").init()
             vim.keymap.set("n", "<leader>cl", "<cmd> ToggleDiag <cr>", { desc = "Toggle lsp", silent = true })
+        end
+    },
+    {
+        "folke/neodev.nvim",
+        config = function()
+            require("neodev").setup({
+                library = { plugins = { "neotest" }, types = true },
+            })
         end
     },
     {
