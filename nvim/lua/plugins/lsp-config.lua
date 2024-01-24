@@ -46,5 +46,16 @@ return {
             require("toggle_lsp_diagnostics").init()
             vim.keymap.set("n", "<leader>cl", "<cmd> ToggleDiag <cr>", { desc = "Toggle lsp", silent = true })
         end
+    },
+    {
+        "Maan2003/lsp_lines.nvim",
+        config = function()
+            vim.diagnostic.config({
+                virtual_text = false,
+            })
+            require("lsp_lines").setup()
+            vim.keymap.set("n", "<Leader>cn", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" }
+            )
+        end,
     }
 }
