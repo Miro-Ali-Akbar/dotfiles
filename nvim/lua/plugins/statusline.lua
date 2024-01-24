@@ -10,7 +10,7 @@ return {
     -- opts = {},
     "ojroques/nvim-hardline",
     config = function ()
-        require('hardline').setup {
+        require("hardline").setup {
             bufferline = true,
         }
         vim.cmd("set cmdheight=0")

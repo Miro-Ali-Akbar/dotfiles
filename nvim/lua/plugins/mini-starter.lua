@@ -1,7 +1,7 @@
 return {
-    'echasnovski/mini.starter',
+    "echasnovski/mini.starter",
     version = false,
     config = function()
-        require('mini.starter').setup()
+        require("mini.starter").setup()
     end,
 }

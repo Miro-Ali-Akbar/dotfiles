@@ -3,8 +3,8 @@ return {
     event = "VeryLazy",
 
     config = function()
-        vim.keymap.set('n', '<leader>e', "<cmd>NvimTreeToggle<cr>", { desc = "Floating tree" })
-        vim.keymap.set('n', '<Esc>', "<cmd>NvimTreeClose<cr>", { desc = "Close tree" })
+        vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Floating tree" })
+        vim.keymap.set("n", "<Esc>", "<cmd>NvimTreeClose<cr>", { desc = "Close tree" })
         local WIDTH_RATIO = 0.89
         local HEIGHT_RATIO = 0.79
 
