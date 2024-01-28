@@ -1,20 +1,70 @@
 #!/bin/bash
 
+# Constants
+dependencies=("bat" "exa" "zoxide")
 
-echo "Installing dotfiles"
+    # Colors
+BOLD="\033[1m"
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+YELLOW="\033[0;33m"
+RESET_FONT="\033[0m"
 
-echo "Installing nvim .file"
-if [ -e "$nvim_config_path" ]; then
-    if [ -L ~/.config/nvim ]; then
-        echo "Overriding symbolic link"
-    else
-        echo "Found /nvim folder - creating backup"
-        mv $HOME/.config/nvim $HOME/.config/nvim.bak
+# Functions
+check_installed_program() {
+    command -v "$1" > /dev/null
+}
+
+check_installed_dependencies() {
+    all_dependencies_met=0
+    for program in "${dependencies[@]}"; do
+        if ! check_installed_program "$program"; then
+            echo -e "${RED}\t Error dependency not met: $program ${RESET_FONT}"
+            echo -e "${RED}\t Please make sure all needed dependencies are downloaded${RESET_FONT}"
+            all_dependencies_met=1
+        fi
+    done
+    [ "$all_dependencies_met" ]
+}
+
+# Start of script
+echo -e "${BOLD}Installing dotfiles${RESET_FONT}"
+
+echo -e "${GREEN}Installing nvim config${RESET_FONT}"
+    if [ -e "$nvim_config_path" ]; then
+        if [ -L ~/.config/nvim ]; then
+            echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
+        else
+            echo -e "${YELLOW}\t Found /nvim folder - creating backup${RESET_FONT}"
+            mv $HOME/.config/nvim $HOME/.config/nvim.bak
+        fi
     fi
-fi
+    echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
+    ln -sf "$(pwd)/nvim" ~/.config/
 
-echo "Placing symbolic link"
-ln -sf "$(pwd)/nvim" ~/.config/
+echo -e "${GREEN}Installing shell shortcuts${RESET_FONT}"
+    echo -e "${GREEN}Sourcing git aliases${RESET_FONT}"
+    git_alias_path="$(pwd)/shell/git_alias.sh"
+    if ! grep -q git_alias ~/.bashrc; then
+        echo "source $git_alias_path" >> ~/.bashrc
+        echo -e "${YELLOW}\t Git alias done${RESET_FONT}"
+    else
+        echo -e "${GREEN}Git alias already sourced${RESET_FONT}"
+    fi
 
-echo "Installing bash shortcuts"
-echo "WIP"
+    echo -e "${GREEN}Sourcing app specific aliases${RESET_FONT}"
+    app_specific_alias_path="$(pwd)/shell/app_specific_alias.sh"
+        if check_installed_dependencies; then
+            echo -e "${GREEN}All dependencies met${RESET_FONT}"
+            if ! grep -q app_specific_alias ~/.bashrc; then
+                echo "source $app_specific_alias_path" >> ~/.bashrc
+                echo -e "${YELLOW}\t App specific alias done${RESET_FONT}"
+            else
+                echo -e "${GREEN}App specific alias already sourced${RESET_FONT}"
+            fi
+        else
+            echo -e "${RED}\t Error dependencies not met${RESET_FONT}"
+        fi
+    
+    
+echo -e "${BOLD}End of dotfiles${RESET_FONT}"
