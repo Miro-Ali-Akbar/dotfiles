@@ -56,6 +56,7 @@ return {
     },
     {
         "Maan2003/lsp_lines.nvim",
+        enabled=false;
         config = function()
             vim.diagnostic.config({
                 virtual_text = false,
