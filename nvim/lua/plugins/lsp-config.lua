@@ -32,18 +32,18 @@ return {
             local lspconfig = require("lspconfig")
             lspconfig.lua_ls.setup({})
 
-            vim.keymap.set("n", "<leader>lk", vim.lsp.buf.hover, { desc = "LSP hover" })
-            vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "LSP defenition" })
-            vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { desc = "LSP references" })
-            vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { desc = "LSP rename" })
-            vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { desc = "LSP code action" })
-            vim.keymap.set("n", "<leader>lD", vim.diagnostic.open_float, { desc = "LSP diagnostic" })
+            vim.keymap.set("n", "<leader>lk",           vim.lsp.buf.hover,          { desc = "Hover" })
+            vim.keymap.set("n", "<leader>ld",           vim.lsp.buf.definition,     { desc = "Defenition" })
+            vim.keymap.set("n", "<leader>lr",           vim.lsp.buf.references,     { desc = "References" })
+            vim.keymap.set("n", "<leader>ln",           vim.lsp.buf.rename,         { desc = "Rename" })
+            vim.keymap.set({ "n", "v" }, "<leader>la",  vim.lsp.buf.code_action,    { desc = "Code action" })
+            vim.keymap.set("n", "<leader>lD",           vim.diagnostic.open_float,  { desc = "Diagnostic" })
             vim.keymap.set("n", "<leader>lf", function()
                 vim.lsp.buf.format { async = true }
-            end, { desc = "LSP format" })
+            end, { desc = "Format" })
 
             require("toggle_lsp_diagnostics").init()
-            vim.keymap.set("n", "<leader>cl", "<cmd> ToggleDiag <cr>", { desc = "Toggle lsp", silent = true })
+            vim.keymap.set("n", "<leader>cl", "<cmd> ToggleDiag <cr>", { desc = "Lsp", silent = true })
         end
     },
     {
@@ -62,7 +62,7 @@ return {
                 virtual_text = false,
             })
             require("lsp_lines").setup()
-            vim.keymap.set("n", "<Leader>cn", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" }
+            vim.keymap.set("n", "<Leader>cn", require("lsp_lines").toggle, { desc = "Lsp lines" }
             )
         end,
     }

@@ -23,7 +23,7 @@ vim.keymap.set("n", "<S-Tab>",  "<cmd> bp <cr>", { desc = "Buffer previous"})
 vim.keymap.set("n", "<Tab>c",   "<cmd> bd <cr>", { desc = "Buffer close"})
 
 -- Line wrap
-vim.keymap.set("n", "<leader>cw", "<cmd> set wrap! <cr>", { desc = "Toggle screen wrap" })
+vim.keymap.set("n", "<leader>cw", "<cmd> set wrap! <cr>", { desc = "Screen wrap" })
 
 -- Vim search
 vim.keymap.set("n", "<c-n>", "<cmd> nohlsearch <CR>", { desc = "Clear serach" })
