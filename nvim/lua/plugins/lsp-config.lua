@@ -27,7 +27,7 @@ return {
     		automatic_installation = true,
     	})
 
-        local lsp_format = function ()
+        function  lsp_format()
             vim.lsp.buf.format { async = true }
         end
 
@@ -37,7 +37,7 @@ return {
         vim.keymap.set("n",             "<leader>ln",   vim.lsp.buf.rename,             { desc = "Rename" })
         vim.keymap.set({ "n", "v" },    "<leader>la",   vim.lsp.buf.code_action,        { desc = "Code action" })
         vim.keymap.set("n",             "<leader>lD",   vim.diagnostic.open_float,      { desc = "Diagnostic" })
-        vim.keymap.set("n",             "<leader>lf",   "<cmd> lua lsp_format() <cr>",  { desc = "Format" })
+        vim.keymap.set("n",             "<leader>lf",   "<cmd>lua lsp_format()<cr>",  { desc = "Format", noremap = true, })
 
         require("toggle_lsp_diagnostics").init()
         vim.keymap.set("n",             "<leader>cl",   "<cmd> ToggleDiag <cr>",        { desc = "Lsp", silent = true })
