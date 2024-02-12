@@ -1,5 +1,5 @@
 return {
-    event = "VeryLazy",
+    cmd = { "ToggleTerm" },
     "akinsho/toggleterm.nvim",
     vim.keymap.set("n", "<leader>tf", "<cmd> ToggleTerm direction=float <cr>", { desc = "Floating" }),
     vim.keymap.set("n", "<leader>tt", "<cmd> ToggleTerm <cr>", { desc = "Normal" }),

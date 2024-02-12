@@ -1,6 +1,6 @@
 return {
     "nvim-tree/nvim-tree.lua",
-    event = "VeryLazy",
+    cmd = { "NvimTreeToggle" },
 
     config = function()
         vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Floating tree" })

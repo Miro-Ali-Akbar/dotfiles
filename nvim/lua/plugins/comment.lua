@@ -1,6 +1,7 @@
 return {
     event = "BufEnter",
     "numToStr/Comment.nvim",
+    -- cmd = { TODO: add }
     config = function()
         require("Comment").setup({
             mappings = { basic = true, extra = true },
