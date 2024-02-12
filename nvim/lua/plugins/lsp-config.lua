@@ -1,7 +1,7 @@
 return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPost" },
-    cmd = { "LspInfo", "LspInstall", "LspUninstall", "Mason" },
+    -- cmd = { "LspInfo", "LspInstall", "LspUninstall", "Mason" },-- TODO: fix so cmd actually works
     dependencies = {
         "williamboman/mason.nvim",
     	"williamboman/mason-lspconfig.nvim",
