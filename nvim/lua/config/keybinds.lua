@@ -30,3 +30,23 @@ vim.keymap.set("n", "<c-n>", "<cmd> nohlsearch <CR>", { desc = "Clear serach" })
 
 -- Vim replace
 vim.keymap.set("n", "<leader>sr", [[:%s/]], { desc = "Replace all" })
+
+-- Vim redo
+vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+vim.keymap.set("n", "<S-r>", "<nop>")
+
+-- TODO: make this
+function SurroundSelectedText(suffix_char)
+    -- Get the selected text
+    local selected_text = vim.fn.getreg(vim.v.register)
+
+    -- Get the start and end positions of the visual selection
+    local start_pos = vim.fn.getpos("'<")
+    local end_pos = vim.fn.getpos("'>")
+
+    -- Modify the text in the buffer to surround the selected text
+    vim.api.nvim_buf_set_text(0, start_pos[2] - 1, start_pos[3] - 1, end_pos[2] - 1, end_pos[3] - 1, {suffix_char .. selected_text .. suffix_char})
+end
+
+
+vim.keymap.set({ "v", "x" }, "<Leader>s", ":lua SurroundSelectedText()<left>", { noremap = true, silent = true })

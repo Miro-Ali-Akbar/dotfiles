@@ -22,3 +22,5 @@ vim.cmd("set smartcase")
 vim.cmd("set inccommand=nosplit")
 -- Makes nvim faster somehow?
 vim.loader.enable()
+-- Persistant undo
+vim.cmd("set undofile")
