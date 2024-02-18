@@ -27,10 +27,29 @@ check_installed_dependencies() {
     [ "$all_dependencies_met" ]
 }
 
+function ask() {
+    read -p "$1 (Y/n): " resp
+    if [ -z "$resp" ]; then
+        response_lc="y" # empty is Yes
+    else
+        response_lc=$(echo "$resp" | tr '[:upper:]' '[:lower:]') # case insensitive
+    fi
+
+    if [ "$response_lc" = "y" ]; then 
+        echo 0 
+    else
+        echo 1
+    fi
+}
+
+# ---------------
 # Start of script
+# ---------------
 echo -e "${BOLD}Installing dotfiles${RESET_FONT}"
 
-echo -e "${GREEN}Installing nvim config${RESET_FONT}"
+do_everything=$(ask "Install everything?")
+if [[ $do_everything -eq 0 ]] || [[ $(ask "Add nvim settings?") -eq 0 ]]; then
+    echo -e "${GREEN}Installing nvim config${RESET_FONT}"
     if [ -e "$nvim_config_path" ]; then
         if [ -L ~/.config/nvim ]; then
             echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
@@ -41,8 +60,14 @@ echo -e "${GREEN}Installing nvim config${RESET_FONT}"
     fi
     echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
     ln -sf "$(pwd)/nvim" ~/.config/
+fi
 
-echo -e "${GREEN}Installing shell shortcuts${RESET_FONT}"
+if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
+    echo -e "${GREEN}Installing shell shortcuts${RESET_FONT}"
+
+    # ---
+    # Git
+    # ---
     echo -e "${GREEN}Sourcing git aliases${RESET_FONT}"
     git_alias_path="$(pwd)/shell/git_alias.sh"
     if ! grep -q git_alias ~/.bashrc; then
@@ -52,19 +77,22 @@ echo -e "${GREEN}Installing shell shortcuts${RESET_FONT}"
         echo -e "${GREEN}Git alias already sourced${RESET_FONT}"
     fi
 
+    # ------------
+    # App specific
+    # ------------
     echo -e "${GREEN}Sourcing app specific aliases${RESET_FONT}"
     app_specific_alias_path="$(pwd)/shell/app_specific_alias.sh"
-        if check_installed_dependencies; then
-            echo -e "${GREEN}All dependencies met${RESET_FONT}"
-            if ! grep -q app_specific_alias ~/.bashrc; then
-                echo "source $app_specific_alias_path" >> ~/.bashrc
-                echo -e "${YELLOW}\t App specific alias done${RESET_FONT}"
-            else
-                echo -e "${GREEN}App specific alias already sourced${RESET_FONT}"
-            fi
+    if check_installed_dependencies; then
+        echo -e "${GREEN}All dependencies met${RESET_FONT}"
+        if ! grep -q app_specific_alias ~/.bashrc; then
+            echo "source $app_specific_alias_path" >> ~/.bashrc
+            echo -e "${YELLOW}\t App specific alias done${RESET_FONT}"
         else
-            echo -e "${RED}\t Error dependencies not met${RESET_FONT}"
+            echo -e "${GREEN}App specific alias already sourced${RESET_FONT}"
         fi
-    
+    else
+        echo -e "${RED}\t Error dependencies not met${RESET_FONT}"
+    fi
+fi 
     
 echo -e "${BOLD}End of dotfiles${RESET_FONT}"
