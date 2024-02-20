@@ -30,3 +30,7 @@ vim.keymap.set("n", "<c-n>", "<cmd> nohlsearch <CR>", { desc = "Clear serach" })
 
 -- Vim replace
 vim.keymap.set("n", "<leader>sr", [[:%s/]], { desc = "Replace all" })
+
+-- Vim redo
+vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+vim.keymap.set("n", "<S-r>", "<nop>")
