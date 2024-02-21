@@ -2,7 +2,7 @@
 ## Requirements
 * git
 * Neovim
-* exa
+* eza
 * bat
 * zoxide
 
@@ -16,4 +16,3 @@ bash install.sh
 ## TODO:
 * Install applications - nvim before running the nvim script perhaps
 * Case insensitive completion
-* Ask function for installing specific things
