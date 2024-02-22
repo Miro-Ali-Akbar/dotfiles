@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Constants
-dependencies=("bat" "exa" "zoxide")
+dependencies=("bat" "eza" "zoxide")
 
     # Colors
 BOLD="\033[1m"
@@ -64,6 +64,18 @@ fi
 
 if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     echo -e "${GREEN}Installing shell shortcuts${RESET_FONT}"
+
+    # ----
+    # Bash
+    #
+    echo -e "${GREEN}Sourcing bash alias${RESET_FONT}"
+    bash_config_path="$(pwd)/shell/bash_config.sh"
+    if ! grep -q bash_config ~/.bashrc; then
+        echo "source $bash_config_path" >> ~/.bashrc
+        echo -e "${YELLOW}\t Bash config done${RESET_FONT}"
+    else
+        echo -e "${GREEN}Bash config already sourced${RESET_FONT}"
+    fi
 
     # ---
     # Git

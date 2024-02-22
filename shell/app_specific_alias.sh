@@ -1,6 +1,6 @@
 # Dependencies
 # bat
-# exa
+# eza
 # zoxide
 
 # bat
