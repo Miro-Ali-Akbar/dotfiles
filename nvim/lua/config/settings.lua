@@ -24,3 +24,5 @@ vim.cmd("set inccommand=nosplit")
 vim.loader.enable()
 -- Persistant undo
 vim.cmd("set undofile")
+-- Mouse = good
+vim.cmd("set mouse=a")
