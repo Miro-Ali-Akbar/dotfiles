@@ -19,8 +19,7 @@ vim.keymap.set("n", "<c-k>", ":wincmd k <cr>", { desc = "Window up" })
 -- Movement between buffers
 vim.keymap.set("n", "<Tab>",    "<cmd> bn <cr>", { desc = "Buffer next"})
 vim.keymap.set("n", "<S-Tab>",  "<cmd> bp <cr>", { desc = "Buffer previous"})
--- Buffer close
-vim.keymap.set("n", "<Tab>c",   "<cmd> bd <cr>", { desc = "Buffer close"})
+-- Buffer close -> see ../plugins/buf-delete.lua
 
 -- Line wrap
 vim.keymap.set("n", "<leader>cw", "<cmd> set wrap! <cr>", { desc = "Screen wrap" })
