@@ -71,6 +71,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     echo -e "${GREEN}Sourcing bash alias${RESET_FONT}"
     bash_config_path="$(pwd)/shell/bash_config.sh"
     if ! grep -q bash_config ~/.bashrc; then
+        echo "Bash config provided by dotfiles located in $(pwd)" >> ~/.bashrc
         echo "source $bash_config_path" >> ~/.bashrc
         echo -e "${YELLOW}\t Bash config done${RESET_FONT}"
     else
@@ -83,6 +84,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     echo -e "${GREEN}Sourcing git aliases${RESET_FONT}"
     git_alias_path="$(pwd)/shell/git_alias.sh"
     if ! grep -q git_alias ~/.bashrc; then
+        echo "Git aliases provided by dotfiles located in $(pwd)" >> ~/.bashrc
         echo "source $git_alias_path" >> ~/.bashrc
         echo -e "${YELLOW}\t Git alias done${RESET_FONT}"
     else
@@ -97,6 +99,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     if check_installed_dependencies; then
         echo -e "${GREEN}All dependencies met${RESET_FONT}"
         if ! grep -q app_specific_alias ~/.bashrc; then
+            echo "App alias provided by dotfiles located in $(pwd)" >> ~/.bashrc
             echo "source $app_specific_alias_path" >> ~/.bashrc
             echo -e "${YELLOW}\t App specific alias done${RESET_FONT}"
         else
