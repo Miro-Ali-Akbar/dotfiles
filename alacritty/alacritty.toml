@@ -1,0 +1,31 @@
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[window]
+    title = "Terminal"
+    dynamic_title = true
+
+[selection]
+    save_to_clipboard = true
+
+[cursor]
+    vi_mode_style = "Beam"
+    
+[env]
+    TERM = "xterm-256color"
+
+[keyboard]
+bindings = [
+{ key = "V", mods = "Control", action = "Paste" },
+# { key = "W", mods = "Control", action = "Quit" },
+# { key = "L", mods = "Shift", action = "ClearHistory" },
+
+# Vi mode
+{ key = "h", mods = "Control", action = "Left" },
+{ key = "j", mods = "Control", action = "Down" },
+{ key = "k", mods = "Control", action = "Up" },
+{ key = "l", mods = "Control", action = "Right" },
+]
+#     bindings = [{"V". "Control". "AppCursor | AppKeypad | Search | Alt | Vi". "Paste" },]
+

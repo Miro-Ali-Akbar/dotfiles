@@ -48,9 +48,13 @@ function ask() {
 echo -e "${BOLD}Installing dotfiles${RESET_FONT}"
 
 do_everything=$(ask "Install everything?")
+
+# ------
+# Nvim
+# -----
 if [[ $do_everything -eq 0 ]] || [[ $(ask "Add nvim settings?") -eq 0 ]]; then
     echo -e "${GREEN}Installing nvim config${RESET_FONT}"
-    if [ -e "$nvim_config_path" ]; then
+    if [ -e ~/.config/nvim ]; then
         if [ -L ~/.config/nvim ]; then
             echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
         else
@@ -62,6 +66,26 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add nvim settings?") -eq 0 ]]; then
     ln -sf "$(pwd)/nvim" ~/.config/
 fi
 
+# ----------
+# Alacritty
+# ----------
+if [[ $do_everything -eq 0 ]] || [[ $(ask "Add alacritty settings?") -eq 0 ]]; then
+    echo -e "${GREEN}Installing allacritty config${RESET_FONT}"
+    if [ -e ~/.config/alacritty ]; then
+        if [ -L ~/.config/alacritty ]; then
+            echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
+        else
+            echo -e "${YELLOW}\t Found /alacritty folder - creating backup${RESET_FONT}"
+            mv $HOME/.config/alacritty/ $HOME/.config/alacritty.bak
+        fi
+    fi
+    echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
+    ln -sf "$(pwd)/alacritty" ~/.config/
+fi
+
+# ----------------
+# Shell shortcuts
+# ----------------
 if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     echo -e "${GREEN}Installing shell shortcuts${RESET_FONT}"
 
@@ -83,9 +107,6 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
         echo -e "${GREEN}Inputrc config already sourced${RESET_FONT}"
     fi
 
-
-
-    # ----
     # Bash
     #
     echo -e "${GREEN}Sourcing bash alias${RESET_FONT}"
@@ -129,5 +150,5 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
         echo -e "${RED}\t Error dependencies not met${RESET_FONT}"
     fi
 fi 
-    
+
 echo -e "${BOLD}End of dotfiles${RESET_FONT}"
