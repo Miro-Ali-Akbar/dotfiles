@@ -10,8 +10,11 @@ return {
         "folke/neodev.nvim",
 
         "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+
+        'akinsho/flutter-tools.nvim',
     },
     config = function()
+        require("flutter-tools").setup ()
         require("neodev").setup()
         require("mason").setup()
 
