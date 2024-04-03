@@ -2,6 +2,7 @@
 ## Requirements
 * git
 * Neovim
+* Alacritty
 * eza
 * bat
 * zoxide
