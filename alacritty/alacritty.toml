@@ -22,10 +22,10 @@ bindings = [
 # { key = "L", mods = "Shift", action = "ClearHistory" },
 
 # Vi mode
-{ key = "h", mods = "Control", action = "Left" },
-{ key = "j", mods = "Control", action = "Down" },
-{ key = "k", mods = "Control", action = "Up" },
-{ key = "l", mods = "Control", action = "Right" },
+# { key = "h", mods = "Control", action = "Left" },
+# { key = "j", mods = "Control", action = "Down" },
+# { key = "k", mods = "Control", action = "Up" },
+# { key = "l", mods = "Control", action = "Right" },
 ]
 #     bindings = [{"V". "Control". "AppCursor | AppKeypad | Search | Alt | Vi". "Paste" },]
 
