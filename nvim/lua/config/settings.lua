@@ -13,16 +13,19 @@ vim.cmd("set clipboard+=unnamedplus")
 vim.cmd("set wrap linebreak")
 -- Adds space for gutter
 vim.cmd("set signcolumn=yes")
--- Sets buffer for curser between border as scroll_of_buffer
+-- Sets buffer for cursor between border as scroll_of_buffer
 vim.cmd("set scrolloff=5")
--- Vim search to be case sensitive when relevent
+-- Vim search to be case sensitive when relevant
 vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
 -- Vim replace - Becomes responsive
 vim.cmd("set inccommand=nosplit")
 -- Makes nvim faster somehow?
 vim.loader.enable()
--- Persistant undo
+-- Persistent undo
 vim.cmd("set undofile")
 -- Mouse = good
 vim.cmd("set mouse=a")
+-- spell 
+vim.opt.spelllang = "en_us, sv"
+vim.opt.spell = true

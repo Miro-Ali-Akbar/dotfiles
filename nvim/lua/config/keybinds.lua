@@ -6,7 +6,7 @@ vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Right" })
 vim.keymap.set("i", "<C-j>", "<Down>",  { desc = "Down" })
 vim.keymap.set("i", "<C-k>", "<Up>",    { desc = "Up" })
 
--- Movement between lines for hardwrap
+-- Movement between lines for hard wrap
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 
