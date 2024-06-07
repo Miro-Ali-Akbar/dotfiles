@@ -4,7 +4,7 @@ vim.opt.expandtab = true
 vim.opt.tabstop = indent_space
 vim.opt.softtabstop = indent_space
 vim.opt.shiftwidth = indent_space
--- Sets rownumber in gutter
+-- Sets row number in gutter
 vim.cmd("set number")
 vim.cmd("set numberwidth=3")
 -- Sets clipboard
@@ -27,5 +27,5 @@ vim.cmd("set undofile")
 -- Mouse = good
 vim.cmd("set mouse=a")
 -- spell 
-vim.opt.spelllang = "en_us, sv"
+vim.opt.spelllang = "en_us,sv"
 vim.opt.spell = true
