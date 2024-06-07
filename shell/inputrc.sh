@@ -20,4 +20,4 @@ set show-all-if-ambiguous on
 set show-all-if-ambiguous on
 
 # Autocomple = case insensitive
-set completion-ignore-case O
+set completion-ignore-case On
