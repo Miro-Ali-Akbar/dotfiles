@@ -11,10 +11,10 @@ return {
 
         "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
 
-        'akinsho/flutter-tools.nvim',
+        -- 'akinsho/flutter-tools.nvim', -- flutter
     },
     config = function()
-        require("flutter-tools").setup ()
+        -- require("flutter-tools").setup() -- flutter
         require("neodev").setup()
         require("mason").setup()
 
