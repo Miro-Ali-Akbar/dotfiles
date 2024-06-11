@@ -11,6 +11,7 @@ return {
         wk.register({
                 l = { name = "LSP" },
                 c = { name = "Toggle" },
+                ca= { name = "Cellular Automaton" },
                 f = { name = "Files" },
                 s = { name = "Search" },
                 t = { name = "Terminal" },
