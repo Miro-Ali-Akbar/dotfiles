@@ -54,25 +54,31 @@ do_everything=$(ask "Install everything?")
 # -----
 if [[ $do_everything -eq 0 ]] || [[ $(ask "Add nvim settings?") -eq 0 ]]; then
     echo -e "${GREEN}Installing nvim config${RESET_FONT}"
-    if [ -e ~/.config/nvim ]; then
-        if [ -L ~/.config/nvim ]; then
-            echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
-        else
-            echo -e "${YELLOW}\t Found /nvim folder - creating backup${RESET_FONT}"
-            mv $HOME/.config/nvim $HOME/.config/nvim.bak
+    nvimlink=$(readlink ~/.config/nvim)
+    nvimfolder=$(pwd)/nvim
+    if [ ! $nvimlink == $nvimfolder ]; then 
+        if [ -e ~/.config/nvim ]; then
+            if [ -L ~/.config/nvim ]; then
+                echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
+            else
+                echo -e "${YELLOW}\t Found /nvim folder - creating backup${RESET_FONT}"
+                mv $HOME/.config/nvim $HOME/.config/nvim.bak
+            fi
         fi
+        echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
+        ln -sf $nvimfolder $HOME/.config/
+    else
+        echo -e "${GREEN}Nvim already configured${RESET_FONT}"
     fi
-    echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
 
     echo -e "${GREEN}\t Installing spell languages${YELLOW}"
-    spelldir=~/.config/nvim/spell/
-    if [ ! -f  "$spelldir"/sv.utf-8.spl ]; then
+    spelldir=$HOME/.config/nvim/spell/
+    if [ ! -f  "$spelldir/sv.utf-8.spl" ]; then
         wget --directory-prefix="$spelldir" http://ftp.vim.org/vim/runtime/spell/sv.utf-8.spl
         wget --directory-prefix="$spelldir" http://ftp.vim.org/vim/runtime/spell/sv.utf-8.sug
     else
         echo -e "${GREEN}\t Already installed all languages${RESET_FONT}"
     fi
-    ln -sf "$(pwd)/nvim" ~/.config/
 fi
 
 # ----------
@@ -80,23 +86,29 @@ fi
 # ----------
 if [[ $do_everything -eq 0 ]] || [[ $(ask "Add alacritty settings?") -eq 0 ]]; then
     echo -e "${GREEN}Installing alacritty config${RESET_FONT}"
-    if [ -e ~/.config/alacritty ]; then
-        if [ -L ~/.config/alacritty ]; then
-            echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
-        else
-            echo -e "${YELLOW}\t Found /alacritty folder - creating backup${RESET_FONT}"
-            mv $HOME/.config/alacritty/ $HOME/.config/alacritty.bak
+    alacrittylink=$(readlink $HOME/.config/alacritty)
+    alacrittyfolder=$(pwd)/alacritty
+    if [ ! $alacrittylink == $alacrittyfolder ]; then 
+        if [ -e ~/.config/alacritty ]; then
+            if [ -L ~/.config/alacritty ]; then
+                echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
+            else
+                echo -e "${YELLOW}\t Found /alacritty folder - creating backup${RESET_FONT}"
+                mv $HOME/.config/alacritty/ $HOME/.config/alacritty.bak
+            fi
         fi
+        echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
+        ln -sf "$(pwd)/alacritty" ~/.config/
+    else
+        echo -e "${GREEN}Alacritty already configured${RESET_FONT}"
     fi
-    echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
-    ln -sf "$(pwd)/alacritty" ~/.config/
 fi
 
 # ----------------
 # Shell shortcuts
 # ----------------
 if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
-    echo -e "${GREEN}Installing shell shortcuts${RESET_FONT}"
+    echo -e "${GREEN}\e[4mInstalling shell shortcuts${RESET_FONT}"
 
     # --------
     # Inputrc
