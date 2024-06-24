@@ -63,6 +63,15 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add nvim settings?") -eq 0 ]]; then
         fi
     fi
     echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
+
+    echo -e "${GREEN}\t Installing spell languages${YELLOW}"
+    spelldir=~/.config/nvim/spell/
+    if [ ! -f  "$spelldir"/sv.utf-8.spl ]; then
+        wget --directory-prefix="$spelldir" http://ftp.vim.org/vim/runtime/spell/sv.utf-8.spl
+        wget --directory-prefix="$spelldir" http://ftp.vim.org/vim/runtime/spell/sv.utf-8.sug
+    else
+        echo -e "${GREEN}\t Already installed all languages${RESET_FONT}"
+    fi
     ln -sf "$(pwd)/nvim" ~/.config/
 fi
 
@@ -70,7 +79,7 @@ fi
 # Alacritty
 # ----------
 if [[ $do_everything -eq 0 ]] || [[ $(ask "Add alacritty settings?") -eq 0 ]]; then
-    echo -e "${GREEN}Installing allacritty config${RESET_FONT}"
+    echo -e "${GREEN}Installing alacritty config${RESET_FONT}"
     if [ -e ~/.config/alacritty ]; then
         if [ -L ~/.config/alacritty ]; then
             echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
@@ -95,7 +104,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     echo -e "${GREEN}Sourcing input.rc${RESET_FONT}"
     inputrc_path="$(pwd)/shell/inputrc.sh"
     # Indlude inputrc if it does not exists already in ~/
-    if [ -e ~/.inputrc ]; then 
+    if [ ! -e ~/.inputrc ]; then 
         echo -e "${YELLOW}\t Creating local ~/inputrc from etc/inputrc${RESET_FONT}"
         echo '$include /etc/inputrc' > ~/.inputrc; 
     fi
