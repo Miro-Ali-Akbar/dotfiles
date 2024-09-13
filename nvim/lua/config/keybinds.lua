@@ -33,3 +33,7 @@ vim.keymap.set("n", "<leader>sr", [[:%s/]], { desc = "Replace all" })
 -- Vim redo
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
 vim.keymap.set("n", "<S-r>", "<nop>")
+
+-- Stay in indent mode
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
