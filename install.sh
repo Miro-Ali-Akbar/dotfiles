@@ -55,7 +55,7 @@ do_everything=$(ask "Install everything?")
 if [[ $do_everything -eq 0 ]] || [[ $(ask "Add nvim settings?") -eq 0 ]]; then
     echo -e "${GREEN}Installing nvim config${RESET_FONT}"
     nvimlink=$(readlink ~/.config/nvim)
-    nvimfolder=$(pwd)/nvim
+    nvimfolder=$(pwd)/config/nvim
     if [[ -z $nvimlink ]] || [[ ! $nvimlink == $nvimfolder ]]; then 
         if [ -e ~/.config/nvim ]; then
             if [ -L ~/.config/nvim ]; then
@@ -87,7 +87,7 @@ fi
 if [[ $do_everything -eq 0 ]] || [[ $(ask "Add alacritty settings?") -eq 0 ]]; then
     echo -e "${GREEN}Installing alacritty config${RESET_FONT}"
     alacrittylink=$(readlink $HOME/.config/alacritty)
-    alacrittyfolder=$(pwd)/alacritty
+    alacrittyfolder=$(pwd)/config/alacritty
     if [[ -z $alacrittylink ]] || [[ ! $alacrittylink == $alacrittyfolder ]]; then 
         if [ -e ~/.config/alacritty ]; then
             if [ -L ~/.config/alacritty ]; then
@@ -98,7 +98,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add alacritty settings?") -eq 0 ]]; t
             fi
         fi
         echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
-        ln -sf "$(pwd)/alacritty" ~/.config/
+        ln -sf $alacrittyfolder $HOME/.config/
     else
         echo -e "${GREEN}Alacritty already configured${RESET_FONT}"
     fi
@@ -110,7 +110,7 @@ fi
 if [[ $do_everything -eq 0 ]] || [[ $(ask "Add Zathura settings?") -eq 0 ]]; then
     echo -e "${GREEN}Installing Zathura config${RESET_FONT}"
     zathuralink=$(readlink $HOME/.config/zathura)
-    zathurafolder=$(pwd)/zathura
+    zathurafolder=$(pwd)/config/zathura
     if [[ -z $zathuralink ]] || [[ ! $zathuralink == $zathurafolder ]]; then 
         if [ -e ~/.config/zathura ]; then
             if [ -L ~/.config/zathura ]; then
@@ -121,7 +121,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add Zathura settings?") -eq 0 ]]; the
             fi
         fi
         echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
-        ln -sf "$(pwd)/zathura" ~/.config/
+        ln -sf $zathurafolder $HOME/.config/
     else
         echo -e "${GREEN}Zathura already configured${RESET_FONT}"
     fi

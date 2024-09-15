@@ -29,3 +29,5 @@ vim.cmd("set mouse=a")
 -- spell 
 vim.opt.spelllang = "en_us,sv"
 vim.opt.spell = true
+-- Conceal for better markdown and tex
+vim.cmd("set conceallevel=2")
