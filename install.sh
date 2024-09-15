@@ -51,12 +51,12 @@ do_everything=$(ask "Install everything?")
 
 # ------
 # Nvim
-# -----
+# ------
 if [[ $do_everything -eq 0 ]] || [[ $(ask "Add nvim settings?") -eq 0 ]]; then
     echo -e "${GREEN}Installing nvim config${RESET_FONT}"
     nvimlink=$(readlink ~/.config/nvim)
     nvimfolder=$(pwd)/nvim
-    if [ ! $nvimlink == $nvimfolder ]; then 
+    if [[ -z $nvimlink ]] || [[ ! $nvimlink == $nvimfolder ]]; then 
         if [ -e ~/.config/nvim ]; then
             if [ -L ~/.config/nvim ]; then
                 echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
@@ -88,7 +88,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add alacritty settings?") -eq 0 ]]; t
     echo -e "${GREEN}Installing alacritty config${RESET_FONT}"
     alacrittylink=$(readlink $HOME/.config/alacritty)
     alacrittyfolder=$(pwd)/alacritty
-    if [ ! $alacrittylink == $alacrittyfolder ]; then 
+    if [[ -z $alacrittylink ]] || [[ ! $alacrittylink == $alacrittyfolder ]]; then 
         if [ -e ~/.config/alacritty ]; then
             if [ -L ~/.config/alacritty ]; then
                 echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
@@ -101,6 +101,29 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add alacritty settings?") -eq 0 ]]; t
         ln -sf "$(pwd)/alacritty" ~/.config/
     else
         echo -e "${GREEN}Alacritty already configured${RESET_FONT}"
+    fi
+fi
+
+# --------
+# Zathura
+# --------
+if [[ $do_everything -eq 0 ]] || [[ $(ask "Add Zathura settings?") -eq 0 ]]; then
+    echo -e "${GREEN}Installing Zathura config${RESET_FONT}"
+    zathuralink=$(readlink $HOME/.config/zathura)
+    zathurafolder=$(pwd)/zathura
+    if [[ -z $zathuralink ]] || [[ ! $zathuralink == $zathurafolder ]]; then 
+        if [ -e ~/.config/zathura ]; then
+            if [ -L ~/.config/zathura ]; then
+                echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
+            else
+                echo -e "${YELLOW}\t Found /zathura folder - creating backup${RESET_FONT}"
+                mv $HOME/.config/zathura/ $HOME/.config/zathura.bak
+            fi
+        fi
+        echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
+        ln -sf "$(pwd)/zathura" ~/.config/
+    else
+        echo -e "${GREEN}Zathura already configured${RESET_FONT}"
     fi
 fi
 
