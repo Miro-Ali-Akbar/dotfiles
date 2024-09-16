@@ -38,7 +38,7 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<Tab>"] = cmp.mapping.select_next_item(),
 					["<S-Tab>"] = cmp.mapping.select_prev_item(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }), -- select suggestion
+					["<CR>"] = cmp.mapping.confirm({ select = false }), -- select suggestion
 				}),
 				-- sources for autocompletion
 				sources = cmp.config.sources({
@@ -47,10 +47,11 @@ return {
 					{ name = "path",    max_item_count = 3 }, -- file system paths
 					{ name = "luasnip", max_item_count = 3 }, -- snippets
 				}),
-				experimental = {
-					ghost_text = true,
-				},
+				-- experimental = {
+				-- 	ghost_text = true,
+				-- },
 			})
+
 		end,
 	},
 }

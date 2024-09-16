@@ -1,8 +1,9 @@
 return {
     "ecthelionvi/NeoColumn.nvim",
-    event = "BufEnter",
+    event = "InsertEnter",
     config = function()
         require("NeoColumn").setup()
-        vim.keymap.set("n", "<leader>cl", "<cmd>ToggleNeoColumn<cr>", { desc = "Column" })
+        vim.cmd("ToggleNeoColumn")
+        vim.keymap.set("n", "<leader>co", "<cmd>ToggleNeoColumn<cr>", { desc = "Column" })
     end,
 }

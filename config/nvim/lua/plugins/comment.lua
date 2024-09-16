@@ -1,7 +1,7 @@
 return {
-    event = "BufEnter",
+    -- event = "BufEnter",
     "numToStr/Comment.nvim",
-    -- cmd = { TODO: add }
+    keys = { "<leader>cc" }, -- Might not be good as whichkey does not enable as config function has not run yet
     config = function()
         require("Comment").setup({
             mappings = { basic = false, extra = false },

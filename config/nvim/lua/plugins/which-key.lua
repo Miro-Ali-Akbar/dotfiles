@@ -5,16 +5,14 @@ return {
     config = function()
         vim.o.timeout = true
         vim.o.timeoutlen = 300
-        require("which-key").register({}, {})
-
         local wk = require("which-key")
-        wk.register({
-                l = { name = "LSP" },
-                c = { name = "Toggle" },
-                ca= { name = "Cellular Automaton" },
-                f = { name = "Files" },
-                s = { name = "Search" },
-                t = { name = "Terminal" },
+        wk.add({
+                { "<leader>c",  group = "Toggle" },
+                { "<leader>ca", group = "Cellular Automaton" },
+                { "<leader>f",  group = "Files" },
+                { "<leader>l",  group = "LSP" },
+                { "<leader>s",  group = "Search" },
+                { "<leader>t",  group = "Terminal" },
             },
             { prefix = "<leader>" })
     end,

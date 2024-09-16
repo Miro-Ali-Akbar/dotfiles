@@ -1,6 +1,6 @@
 return {
     "danymat/neogen",
-    event = "BufEnter", -- TODO: make only start on sertain files
+    event = "InsertEnter",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = function()
         require("neogen").setup({
