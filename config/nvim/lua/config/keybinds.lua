@@ -37,3 +37,7 @@ vim.keymap.set("n", "<S-r>", "<nop>")
 -- Stay in indent mode
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
+
+-- Disable q: and make to :q
+vim.keymap.set("n", "q:", "<nop>")
+vim.keymap.set("n", "q:", "<cmd> q <cr>")
