@@ -1,7 +1,8 @@
 import = [
   "~/.config/alacritty/catppuccin-mocha.toml"
 ]
-
+[font]
+        normal = { family = "Monocraft Nerd Font", style = "normal" }
 [window]
     title = "Terminal"
     dynamic_title = true
@@ -17,7 +18,7 @@ import = [
 
 [keyboard]
 bindings = [
-{ key = "V", mods = "Control", action = "Paste" },
+# { key = "V", mods = "Control", action = "Paste" },
 # { key = "W", mods = "Control", action = "Quit" },
 # { key = "L", mods = "Shift", action = "ClearHistory" },
 
