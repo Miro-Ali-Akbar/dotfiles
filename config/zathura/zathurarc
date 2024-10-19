@@ -14,4 +14,9 @@ set scroll-step 100
 set zoom-min 10
 set guioptions ""
 
+# Zoom in/out
+map z zoom in
+map + zoom in
+map - zoom out
+
 include catppuccin-mocha
