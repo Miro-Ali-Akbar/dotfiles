@@ -9,7 +9,11 @@ return {
       use_split = false,
     })
     local api = require("executor").commands
-    vim.keymap.set('n', "<leader><leader>", api.run_one_off, { desc = "Execute" })
+    local function set_and_run()
+      api.set_command()
+      api.run()
+    end
+    vim.keymap.set('n', "<leader><leader>", set_and_run, { desc = "Execute" })
     vim.keymap.set('n', "<leader>d", api.show_detail, { desc = "Show detail" })
     vim.keymap.set('n', "q", api.hide_detail, { desc = "hide" })
     vim.keymap.set('n', "<ESC>", api.hide_detail, { desc = "hide" })
