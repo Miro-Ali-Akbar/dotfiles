@@ -5,7 +5,7 @@
 
 # bat
 alias cat="bat"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+#export MANPAGER="bat"
 
 alias ls="eza"
 
