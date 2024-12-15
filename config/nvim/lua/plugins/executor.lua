@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   lazy = false,
   "google/executor.nvim",
   dependencies = {
