@@ -26,6 +26,6 @@ return {
                 { class = 'mode',    item = require('hardline.parts.line').get_item },
             },
         }
-        vim.cmd("set cmdheight=0")
+        -- vim.cmd("set cmdheight=0")
     end
 }
