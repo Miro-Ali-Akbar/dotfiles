@@ -1,6 +1,8 @@
 return {
     "danymat/neogen",
-    event = "InsertEnter",
+    keys = {
+        { "<leader>lm", nil, desc = "Neogen annotation" },
+    },
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = function()
         require("neogen").setup({

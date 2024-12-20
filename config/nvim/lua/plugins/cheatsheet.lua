@@ -1,6 +1,8 @@
 return {
     "sudormrfbin/cheatsheet.nvim",
-    event = "InsertEnter",
+    keys = {
+        { "<leader>fH", nil, desc = "Cheatsheet" }
+    },
     dependencies = {
         "nvim-telescope/telescope.nvim",
         "nvim-lua/popup.nvim",
@@ -12,6 +14,6 @@ return {
                 disabled = { "nerd-fonts" },
             },
         })
-        vim.keymap.set("n", "<leader>fh", "<cmd> Cheatsheet <cr> ", { desc = "Cheatsheet" })
+        vim.keymap.set("n", "<leader>fH", "<cmd> Cheatsheet <cr> ", { desc = "Cheatsheet" })
     end
 }
