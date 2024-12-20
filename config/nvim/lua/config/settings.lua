@@ -11,6 +11,7 @@ vim.cmd("set numberwidth=3")
 vim.cmd("set clipboard+=unnamedplus")
 -- Makes text wrap be based on words
 vim.cmd("set wrap linebreak")
+vim.cmd("set breakindent")
 -- Adds space for gutter
 vim.cmd("set signcolumn=yes")
 -- Sets buffer for cursor between border as scroll_of_buffer
