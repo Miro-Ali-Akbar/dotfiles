@@ -195,4 +195,22 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     fi
 fi 
 
+
+# -------
+# Scripts
+# -------
+if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell scripts?") -eq 0 ]]; then
+    echo -e "${GREEN}Installing shell scripts${RESET_FONT}"
+    script_folder="$(pwd)/shell/scripts"
+    if ! grep -q scripts ~/.bashrc; then
+        chmod +x $(pwd)/shell/scripts/*
+        echo "# Scripts folder sourced provided by dotfiles located in $(pwd)" >> ~/.bashrc
+        echo "export PATH=\"$script_folder:\$PATH\"" >> ~/.bashrc
+        echo -e "${YELLOW}\t Script source done${RESET_FONT}"
+    else
+        echo -e "${GREEN}Scripts already sourced${RESET_FONT}"
+    fi
+fi
+
 echo -e "${BOLD}End of dotfiles${RESET_FONT}"
+exit 0

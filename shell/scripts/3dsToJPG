@@ -1,0 +1,58 @@
+#!/bin/bash
+
+counter=1
+
+# Check correct usage
+usage() {
+  echo "Usage: 3dsToJPG [-s <start_number>] <image_name>"
+  echo "  -s <start_number> : Optional flag to specify non 1 starting number"
+  echo "  <image_name>    : Stub name of counted images"
+  exit 1
+}
+
+# Parse arguments
+while getopts ":s:" opt; do
+  case $opt in
+    s)
+      if [[ "$OPTARG" =~ ^[0-9]+$ ]]; then
+        counter=$OPTARG
+        echo "Starting counting from $counter"
+      else
+        echo "Error: Start number is not a number"
+        usage
+      fi
+      ;;
+    \?)
+      echo "Error: Invalid flag"
+      usage
+      ;;
+    :)
+      echo "Error: -s requires an argument"
+      usage
+      ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+# Check if image name is provided
+if [ -z "$1" ]; then
+  echo "Error: Command needs stub name"
+  usage
+fi
+
+IMGName="$1"
+
+# Remove .mpo files
+find . -name "*.MPO" -exec rm  {} \+
+echo "Removed MPO Files"
+
+fileCount=0
+# Loop all images
+for file in ./HNI*.JPG; do
+  mv "$file" "./${IMGName} ($counter).JPG"
+  counter=$((counter + 1))
+  fileCount=$((fileCount + 1))
+done
+
+echo "Operation successful $fileCount images have been named!"
+exit 0
