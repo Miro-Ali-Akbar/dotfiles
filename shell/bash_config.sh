@@ -12,3 +12,6 @@ PS1='\[\033[01;32m\]$(ErrorCodeColor)\u\e[0m:\[\033[01;31m\]$(ErrorCodeColor)\w$
 # Alias
 alias ..="cd .."
 alias cl="clear"
+
+# manpage highlighter
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
