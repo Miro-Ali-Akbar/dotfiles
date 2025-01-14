@@ -4,7 +4,10 @@
 shopt -s autocd
 
 # Promt
-PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;31m\]\w$(__git_ps1 " \[\033[01;32m\](%s)\[\033[00m\] ")$([[ $? != 0 ]] && echo "\[\033[01;31m\]|Error|\[\033[00m\]")\[\033[00m\]:> '
+ErrorCodeColor() {
+    [[ $? != 0 ]] && printf '\033[01;31m'
+}
+PS1='\[\033[01;32m\]$(ErrorCodeColor)\u\e[0m:\[\033[01;31m\]$(ErrorCodeColor)\w$(__git_ps1 " \[\033[01;32m\]$(ErrorCodeColor)(%s) ")\e[0m:> '
 
 # Alias
 alias ..="cd .."
