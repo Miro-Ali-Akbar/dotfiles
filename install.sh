@@ -72,7 +72,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add nvim settings?") -eq 0 ]]; then
     fi
 
     echo -e "${GREEN}\t Installing spell languages${YELLOW}"
-    spelldir=$HOME/.config/nvim/spell/
+    spelldir=$HOME/.config/config/nvim/spell/
     if [ ! -f  "$spelldir/sv.utf-8.spl" ]; then
         # Spell files download previously "http://ftp.vim.org/vim/runtime/spell/"
         wget --directory-prefix="$spelldir" https://ftp.nluug.nl/vim/runtime/spell/sv.utf-8.spl
