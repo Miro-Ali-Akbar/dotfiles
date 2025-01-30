@@ -156,9 +156,11 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     #
     echo -e "${GREEN}Sourcing bash alias${RESET_FONT}"
     bash_config_path="$(pwd)/shell/bash_config.sh"
+    git_promt_path="$(pwd)/shell/.git-prompt.sh"
     if ! grep -q bash_config ~/.bashrc; then
         echo "# Bash config provided by dotfiles located in $(pwd)" >> ~/.bashrc
         echo "source $bash_config_path" >> ~/.bashrc
+        echo "source $git_promt_path" >> ~/.bashrc
         echo -e "${YELLOW}\t Bash config done${RESET_FONT}"
     else
         echo -e "${GREEN}Bash config already sourced${RESET_FONT}"
