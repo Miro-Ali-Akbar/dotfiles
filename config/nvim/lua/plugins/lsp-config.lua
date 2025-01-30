@@ -27,7 +27,7 @@ return {
             end,
         })
         mason_lspconfig.setup({
-            ensure_installed = { "clangd", "ts_ls", "bashls", "pyright" }
+            ensure_installed = { "clangd", "ts_ls", "bashls", "pyright" },
     		automatic_installation = true,
     	})
 
