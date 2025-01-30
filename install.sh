@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Constants
 dependencies=("bat" "eza" "zoxide")
