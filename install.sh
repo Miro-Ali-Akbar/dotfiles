@@ -74,8 +74,9 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add nvim settings?") -eq 0 ]]; then
     echo -e "${GREEN}\t Installing spell languages${YELLOW}"
     spelldir=$HOME/.config/nvim/spell/
     if [ ! -f  "$spelldir/sv.utf-8.spl" ]; then
-        wget --directory-prefix="$spelldir" http://ftp.vim.org/vim/runtime/spell/sv.utf-8.spl
-        wget --directory-prefix="$spelldir" http://ftp.vim.org/vim/runtime/spell/sv.utf-8.sug
+        # Spell files download previously "http://ftp.vim.org/vim/runtime/spell/"
+        wget --directory-prefix="$spelldir" https://ftp.nluug.nl/vim/runtime/spell/sv.utf-8.spl
+        wget --directory-prefix="$spelldir" https://ftp.nluug.nl/vim/runtime/spell/sv.utf-8.sug
     else
         echo -e "${GREEN}\t Already installed all languages${RESET_FONT}"
     fi
