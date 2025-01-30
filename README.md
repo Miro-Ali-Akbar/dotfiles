@@ -2,6 +2,7 @@
 ## Requirements
 * git
 * Neovim
+* Zathura
 * Alacritty
 * eza
 * bat
@@ -15,5 +16,4 @@ bash install.sh
 ```
 
 ## TODO:
-* Install applications - nvim before running the nvim script perhaps
-* Case insensitive completion
+* ? 
