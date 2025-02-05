@@ -37,6 +37,14 @@ return {
 			vim.keymap.set("n", "<leader>RA", function()
 				runner.run_all(true)
 			end, { desc = "run all cells of all languages", silent = true })
+			vim.keymap.set('n', '<leader>rs', function()
+				vim.cmd('MoltenInit')
+				vim.cmd('QuartoActivate')
+				require("nabla").enable_virt()
+			end, { desc = "Start REPEL" })
+			vim.keymap.set("n", "<leader>rI", "<cmd> MoltenInterrupt <cr>", { desc = "Interrupt run" })
+			vim.keymap.set("n", "<leader>rr", "<cmd> MoltenShowOutput <cr>", { desc = "Open output" })
+			vim.keymap.set("n", "<leader>rR", "<cmd> MoltenHideOutput <cr>", { desc = "Close output" })
 		end,
 	},
 	{
@@ -60,16 +68,19 @@ return {
 		version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
 		build = ":UpdateRemotePlugins",
 		init = function()
-			vim.g.molten_auto_open_output = true
+			-- vim.g.molten_auto_open_output = true
 			vim.g.molten_wrap_output = true
 			vim.g.molten_virt_text_output = true
 			vim.g.molten_virt_lines_off_by_1 = true
+			vim.g.molten_auto_open_output = false
+			vim.g.molten_output_win_max_height = 40
 		end,
 	},
 	{
 		"jbyuki/nabla.nvim",
 		init = function()
-			vim.keymap.set("n", "<leader>cn", "<cmd> lua require(\"nabla\").toggle_virt() <cr>", { desc = "Start inline latex math"})
+			vim.keymap.set("n", "<leader>cn", "<cmd> lua require(\"nabla\").toggle_virt() <cr>",
+				{ desc = "Start inline latex math" })
 		end,
 	},
 }
