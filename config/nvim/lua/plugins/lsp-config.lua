@@ -7,7 +7,7 @@ return {
     	"williamboman/mason-lspconfig.nvim",
 
         "hrsh7th/cmp-nvim-lsp",
-        "folke/neodev.nvim",
+        "folke/lazydev.nvim",
 
         "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
 
@@ -15,7 +15,7 @@ return {
     },
     config = function()
         -- require("flutter-tools").setup() -- flutter
-        require("neodev").setup()
+        require("lazydev").setup()
         require("mason").setup()
 
         local mason_lspconfig = require("mason-lspconfig")
@@ -31,7 +31,7 @@ return {
     		automatic_installation = true,
     	})
 
-        function  lsp_format()
+        function lsp_format()
             vim.lsp.buf.format { async = true }
         end
 
