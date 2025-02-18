@@ -67,6 +67,9 @@ return {
 		"benlubas/molten-nvim",
 		version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
 		build = ":UpdateRemotePlugins",
+		-- To add a enviorment run
+		-- "python -m ipykernel install --user --name project_name"
+		-- from https://github.com/benlubas/molten-nvim/blob/main/docs/Virtual-Environments.md
 		init = function()
 			-- vim.g.molten_auto_open_output = true
 			vim.g.molten_wrap_output = true
@@ -77,10 +80,25 @@ return {
 		end,
 	},
 	{
+		enabled = false,
+		'Thiago4532/mdmath.nvim',
+		dependencies = {
+			'nvim-treesitter/nvim-treesitter',
+		},
+		opts = { ... }
+
+		-- The build is already done by default in lazy.nvim, so you don't need
+		-- the next line, but you can use the command `:MdMath build` to rebuild
+		-- if the build fails for some reason.
+		-- build = ':MdMath build'
+	},
+	{
+		enabled = true,
 		"jbyuki/nabla.nvim",
 		init = function()
 			vim.keymap.set("n", "<leader>cn", "<cmd> lua require(\"nabla\").toggle_virt() <cr>",
 				{ desc = "Start inline latex math" })
+			vim.keymap.set("n", "<leader>rn", "<cmd> lua require(\"nabla\").popup() <cr>", { desc = "Popup latex math" })
 		end,
 	},
 }
