@@ -66,6 +66,9 @@ return {
 	{
 		"benlubas/molten-nvim",
 		version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
+		keys = {
+			{ "<leader>rs", nil, },
+		},
 		build = ":UpdateRemotePlugins",
 		-- To add a enviorment run
 		-- "python -m ipykernel install --user --name project_name"
@@ -95,6 +98,11 @@ return {
 	{
 		enabled = true,
 		"jbyuki/nabla.nvim",
+		keys = {
+			{ "<leader>cn", nil, desc = "Start inline latex math" },
+			{ "<leader>rn", nil, desc = "Popup latex math" },
+			{ "<leader>rs", nil, },
+		},
 		init = function()
 			vim.keymap.set("n", "<leader>cn", "<cmd> lua require(\"nabla\").toggle_virt() <cr>",
 				{ desc = "Start inline latex math" })
