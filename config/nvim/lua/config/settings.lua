@@ -32,3 +32,8 @@ vim.opt.spelllang = "en_us,sv"
 vim.opt.spell = true
 -- Conceal for better markdown and tex
 vim.cmd("set conceallevel=2")
+-- Folds
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevelstart = 99
+vim.opt.foldtext = ""
