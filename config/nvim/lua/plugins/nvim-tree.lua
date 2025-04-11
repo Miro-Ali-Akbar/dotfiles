@@ -8,7 +8,8 @@ return {
 
             vim.keymap.set('n', '?', api.tree.toggle_help, { desc = "Help", buffer = bufnr })
             vim.keymap.set("n", "<C-CR>", api.tree.change_root_to_node, { desc = "Change root", buffer = bufnr })
-            vim.keymap.set("n", "<CR>", api.node.open.no_window_picker, { desc = "Open file in current window", buffer = bufnr })
+            vim.keymap.set("n", "<CR>", api.node.open.no_window_picker,
+                { desc = "Open file in current window", buffer = bufnr })
             -- Default
             vim.keymap.set("n", "a", api.fs.create, { desc = "Create", buffer = bufnr })
             vim.keymap.set("n", "d", api.fs.remove, { desc = "Delete", buffer = bufnr })
@@ -60,6 +61,13 @@ return {
                 end,
             },
             on_attach = my_on_attach,
+
+            -- nvim-rooter integration
+            update_cwd = true,
+            update_focused_file = {
+                enable = true,
+                update_cwd = true
+            },
         })
     end
 }
