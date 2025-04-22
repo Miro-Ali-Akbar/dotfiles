@@ -1,7 +1,8 @@
 return {
-  'hat0uma/csvview.nvim',
-  cmd = { "CsvViewEnable" },
-  config = function()
-    require('csvview').setup()
-  end
+    'hat0uma/csvview.nvim',
+    ft = {"csv"};
+    cmd = { "CsvViewEnable" },
+    config = function()
+        require('csvview').setup()
+    end
 }
