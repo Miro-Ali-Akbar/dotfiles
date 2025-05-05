@@ -10,6 +10,9 @@
 [url "https://github.com/Miro-Ali-Akbar/"]
     insteadOf = "miro:"
 
+[alias]
+    undo = reset --soft HEAD^
+
 [status]
     branch = true
     showStash = true
@@ -28,3 +31,6 @@
 
 [log]
     abbrevCommit = true
+
+[advice]
+    statusHints = false
