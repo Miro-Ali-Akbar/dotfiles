@@ -1,6 +1,6 @@
 return {
     {
-        enabled = true,
+        enabled = false,
         "tris203/precognition.nvim",
         event = "BufEnter",
         config = function()
@@ -10,6 +10,7 @@ return {
 
     },
     {
+        enabled = false,
         "m4xshen/hardtime.nvim",
         event = "BufEnter",
         dependencies = { "MunifTanjim/nui.nvim" },

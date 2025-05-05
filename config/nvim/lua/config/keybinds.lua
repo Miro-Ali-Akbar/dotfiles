@@ -65,4 +65,4 @@ end
 vim.keymap.set("n", "<leader>ck", "m'yyPgcc`'", { remap = true, desc = "Current line commented it" })
 
 -- Auto correct previous spelling mistake
-vim.keymap.set("i", "<c-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { remap = true, desc = "Correct previous spelling mistake" })
+vim.keymap.set("i", "<c-s>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { remap = true, desc = "Correct previous spelling mistake" })
