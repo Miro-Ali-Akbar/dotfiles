@@ -1,0 +1,30 @@
+[user]
+    name = Miro Ali Akbar
+    email = 113117782+Miro-Ali-Akbar@users.noreply.github.com
+
+[core]
+    compression = 9
+    whitespace = error
+    preloadindex = true
+
+[url "https://github.com/Miro-Ali-Akbar/"]
+    insteadOf = "miro:"
+
+[status]
+    branch = true
+    showStash = true
+
+[diff]
+    context = 3
+    renames = copies
+    interHunkContext = 10
+
+[push]
+    autoSetupRemote = true
+    default = current
+
+[pull]
+    default = current
+
+[log]
+    abbrevCommit = true

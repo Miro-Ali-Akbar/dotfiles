@@ -139,7 +139,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     # --------
     echo -e "${GREEN}Sourcing input.rc${RESET_FONT}"
     inputrc_path="$(pwd)/shell/inputrc.sh"
-    # Indlude inputrc if it does not exists already in ~/
+    # Include inputrc if it does not exists already in ~/
     if [ ! -e ~/.inputrc ]; then 
         echo -e "${YELLOW}\t Creating local ~/inputrc from etc/inputrc${RESET_FONT}"
         echo '$include /etc/inputrc' > ~/.inputrc; 
@@ -177,6 +177,23 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
         echo -e "${YELLOW}\t Git alias done${RESET_FONT}"
     else
         echo -e "${GREEN}Git alias already sourced${RESET_FONT}"
+    fi
+    echo -e "${GREEN}Sourcing git config folder${RESET_FONT}"
+    git_config_folder=$(pwd)/config/git
+    git_config_link=$(readlink $HOME/.config/git)
+    if [[ -z $git_config_link ]] || [[ ! $git_config_link == $git_config_folder ]]; then 
+        if [ -e ~/.config/git ]; then
+            if [ -L ~/.config/git ]; then
+                echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
+            else
+                echo -e "${YELLOW}\t Found /git folder - creating backup${RESET_FONT}"
+                mv $HOME/.config/git/ $HOME/.config/git.bak
+            fi
+        fi
+        echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
+        ln -sf $git_config_folder $HOME/.config/
+    else
+        echo -e "${GREEN}Git folder already configured${RESET_FONT}"
     fi
 
     # ------------
