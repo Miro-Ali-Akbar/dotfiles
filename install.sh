@@ -24,7 +24,7 @@ check_installed_dependencies() {
             all_dependencies_met=1
         fi
     done
-    [ "$all_dependencies_met" ]
+    return "$all_dependencies_met"
 }
 
 function ask() {
