@@ -1,3 +1,17 @@
+local layout = {
+    layout = {
+        backdrop = false,
+        box = "horizontal",
+        width = 0.8,
+        height = 0.8,
+        {
+            box = "vertical",
+            { win = "input", height = 1, },
+            { win = "list", },
+        },
+        { win = "preview", width = 0.7 },
+    },
+}
 return {
 
     "folke/snacks.nvim",
@@ -66,5 +80,13 @@ return {
             },
         },
         scroll = {},
+        picker = {
+            layout = layout,
+            backdrop = false,
+        },
+    },
+    keys = {
+        { "<leader>ff", function() Snacks.picker.smart() end, desc = "Files" },
+        { "<leader>fw", function() Snacks.picker.grep() end,  desc = "Words" },
     },
 }
