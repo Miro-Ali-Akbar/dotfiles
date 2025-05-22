@@ -1,5 +1,6 @@
 return {
     event = { "BufEnter" },
+    enabled = false,
     "folke/todo-comments.nvim",
     -- TODO: add theme
     config = function()
