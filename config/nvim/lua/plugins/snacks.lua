@@ -82,7 +82,15 @@ return {
         scroll = {},
         picker = {
             layout = layout,
-            backdrop = false,
+            win = {
+                input = {
+                    keys = {
+                        ["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
+                        ["<Tab>"] = { "list_down", mode = { "i", "n" } },
+                    },
+                },
+            },
+
         },
     },
     keys = {
