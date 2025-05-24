@@ -66,3 +66,7 @@ vim.keymap.set("n", "<leader>ck", "m'yyPgcc`'", { remap = true, desc = "Current 
 
 -- Auto correct previous spelling mistake
 vim.keymap.set("i", "<c-s>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { remap = true, desc = "Correct previous spelling mistake" })
+
+-- Jump to tag and back
+vim.keymap.set('n', '<leader>o', '<C-]>', { silent = true, desc = "Jump to tag"} )
+vim.keymap.set('n', '<leader>O', '<C-t>', { silent = true, desc = "Jump to previous tag"} )
