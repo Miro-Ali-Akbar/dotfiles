@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 local map = vim.keymap.set
 
 -- Movement in insert mode
-map("i", "<C-h>", "<Left>", { desc = "Left" }) 
+map("i", "<C-h>", "<Left>", { desc = "Left" })
 map("i", "<C-l>", "<Right>", { desc = "Right" })
 map("i", "<C-j>", "<Down>", { desc = "Down" })
 map("i", "<C-k>", "<Up>", { desc = "Up" })
@@ -74,5 +74,19 @@ map("n", "<c-p>", "o<esc>p", { remap = true, desc = "Paste bellow" })
 map("i", "<c-s>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { remap = true, desc = "Correct previous spelling mistake" })
 
 -- Jump to tag and back
-map('n', '<leader>o', '<C-]>', { silent = true, desc = "Jump to tag"} )
-map('n', '<leader>O', '<C-t>', { silent = true, desc = "Jump to previous tag"} )
+map("n", "<leader>o", "<C-]>", { silent = true, desc = "Jump to tag" })
+map("n", "<leader>O", "<C-t>", { silent = true, desc = "Jump to previous tag" })
+
+-- Toggle indent
+local function toggle_indent()
+    if vim.g.Indent_space == 4 then
+        vim.g.Indent_space = 2
+    else
+        vim.g.Indent_space = 4
+    end
+    vim.opt.tabstop = vim.g.Indent_space
+    vim.opt.softtabstop = vim.g.Indent_space
+    vim.opt.shiftwidth = vim.g.Indent_space
+end
+
+map("n", "<leader>ct", toggle_indent, { desc = "Indent" })

@@ -1,9 +1,9 @@
 -- Makes tabs be good and sets indent_space
-local indent_space = 4
+vim.g.Indent_space = 4
 vim.opt.expandtab = true
-vim.opt.tabstop = indent_space
-vim.opt.softtabstop = indent_space
-vim.opt.shiftwidth = indent_space
+vim.opt.tabstop = vim.g.Indent_space
+vim.opt.softtabstop = vim.g.Indent_space
+vim.opt.shiftwidth = vim.g.Indent_space
 
 -- Sets row number in gutter
 vim.opt.number = true

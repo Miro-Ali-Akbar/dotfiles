@@ -1,4 +1,5 @@
 return {
+    enabled = false,
     "jay-babu/mason-null-ls.nvim",
     event = "InsertEnter",
     dependencies = {

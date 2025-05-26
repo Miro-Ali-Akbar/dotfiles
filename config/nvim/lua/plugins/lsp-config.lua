@@ -26,11 +26,11 @@ return {
 
         vim.diagnostic.config({ virtual_text = true, })
 
-        function Lsp_toggle_diagnostic()
+        local function lsp_toggle_diagnostic()
             vim.diagnostic.enable(not vim.diagnostic.is_enabled())
         end
 
-        function Lsp_format()
+        local function lsp_format()
             vim.lsp.buf.format { async = true }
         end
 
@@ -40,7 +40,7 @@ return {
         vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { desc = "Rename" })
         vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { desc = "Code action" })
         vim.keymap.set("n", "<leader>lD", vim.diagnostic.open_float, { desc = "Diagnostic" })
-        vim.keymap.set("n", "<leader>lf", "<cmd>lua Lsp_format()<cr>", { desc = "Format", noremap = true, })
-        vim.keymap.set('n', '<leader>cl', "<cmd>lua Lsp_toggle_diagnostic()<cr>", { desc = "Lsp diagnostics" })
+        vim.keymap.set("n", "<leader>lf", lsp_format, { desc = "Format", noremap = true, })
+        vim.keymap.set('n', '<leader>cl', lsp_toggle_diagnostic, { desc = "Lsp diagnostics" })
     end
 }
