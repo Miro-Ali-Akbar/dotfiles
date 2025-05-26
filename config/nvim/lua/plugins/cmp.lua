@@ -6,6 +6,7 @@ return {
             "rafamadriz/friendly-snippets",
             "ribru17/blink-cmp-spell",
             "erooke/blink-cmp-latex",
+            "alexandre-abrioux/blink-cmp-npm.nvim",
         },
         ---@module "blink.cmp"
         ---@type blink.cmp.Config
@@ -33,43 +34,39 @@ return {
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
-                default = { "lazydev", "path", "lsp", "snippets", "spell", "buffer" },
+                default = { "npm", "latex", "lazydev", "path", "lsp", "snippets", "spell", "buffer" },
                 providers = {
+                    npm = {
+                        name = "npm",
+                        module = "blink-cmp-npm",
+                        async = true,
+                        -- optional - make blink-cmp-npm completions top priority (see `:h blink.cmp`)
+                        score_offset = 100,
+                        -- optional - blink-cmp-npm config
+                        ---@module "blink-cmp-npm"
+                        ---@type blink-cmp-npm.Options
+                        opts = {
+                            ignore = {},
+                            only_semantic_versions = true,
+                            only_latest_version = false,
+                        }
+                    },
+                    latex = {
+                        name = "Latex",
+                        module = "blink-cmp-latex",
+                        opts = {
+                            -- set to true to insert the latex command instead of the symbol
+                            insert_command = true
+                        },
+                    },
+                    lazydev = {
+                        name = "LazyDev",
+                        module = "lazydev.integrations.blink",
+                        -- make lazydev completions top priority (see `:h blink.cmp`)
+                        score_offset = 100,
+                    },
                     path = {
                         max_items = 3,
-                    },
-                    buffer = {
-                        -- keep case of first char
-                        transform_items = function(a, items)
-                            local keyword = a.get_keyword()
-                            local correct, case
-                            if keyword:match('^%l') then
-                                correct = '^%u%l+$'
-                                case = string.lower
-                            elseif keyword:match('^%u') then
-                                correct = '^%l+$'
-                                case = string.upper
-                            else
-                                return items
-                            end
-
-                            -- avoid duplicates from the corrections
-                            local seen = {}
-                            local out = {}
-                            for _, item in ipairs(items) do
-                                local raw = item.insertText
-                                if raw:match(correct) then
-                                    local text = case(raw:sub(1, 1)) .. raw:sub(2)
-                                    item.insertText = text
-                                    item.label = text
-                                end
-                                if not seen[item.insertText] then
-                                    seen[item.insertText] = true
-                                    table.insert(out, item)
-                                end
-                            end
-                            return out
-                        end
                     },
                     spell = {
                         name = 'Spell',
@@ -100,12 +97,6 @@ return {
                                 return in_spell_capture
                             end,
                         },
-                    },
-                    lazydev = {
-                        name = "LazyDev",
-                        module = "lazydev.integrations.blink",
-                        -- make lazydev completions top priority (see `:h blink.cmp`)
-                        score_offset = 100,
                     },
                 }
             },
