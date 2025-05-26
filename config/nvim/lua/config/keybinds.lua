@@ -1,48 +1,51 @@
 vim.g.mapleader = " "
 
+local map = vim.keymap.set
+
 -- Movement in insert mode
-vim.keymap.set("i", "<C-h>", "<Left>", { desc = "Left" }) vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Right" })
-vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Down" })
-vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Up" })
+map("i", "<C-h>", "<Left>", { desc = "Left" }) 
+map("i", "<C-l>", "<Right>", { desc = "Right" })
+map("i", "<C-j>", "<Down>", { desc = "Down" })
+map("i", "<C-k>", "<Up>", { desc = "Up" })
 
 -- Movement between lines for hard wrap
-vim.keymap.set("n", "j", "gj")
-vim.keymap.set("n", "k", "gk")
+map("n", "j", "gj")
+map("n", "k", "gk")
 
 -- Movement between windows
-vim.keymap.set("n", "<c-h>", ":wincmd h <cr>", { desc = "Window left" })
-vim.keymap.set("n", "<c-l>", ":wincmd l <cr>", { desc = "Window right" })
-vim.keymap.set("n", "<c-j>", ":wincmd j <cr>", { desc = "Window down" })
-vim.keymap.set("n", "<c-k>", ":wincmd k <cr>", { desc = "Window up" })
+map("n", "<c-h>", ":wincmd h <cr>", { desc = "Window left" })
+map("n", "<c-l>", ":wincmd l <cr>", { desc = "Window right" })
+map("n", "<c-j>", ":wincmd j <cr>", { desc = "Window down" })
+map("n", "<c-k>", ":wincmd k <cr>", { desc = "Window up" })
 
 -- Movement between buffers
-vim.keymap.set("n", "<Tab>", "<cmd> bn <cr>", { desc = "Buffer next" })
-vim.keymap.set("n", "<S-Tab>", "<cmd> bp <cr>", { desc = "Buffer previous" })
+map("n", "<Tab>", "<cmd> bn <cr>", { desc = "Buffer next" })
+map("n", "<S-Tab>", "<cmd> bp <cr>", { desc = "Buffer previous" })
 -- Buffer close -> see ../plugins/snacks.lua
 
 -- Line wrap
-vim.keymap.set("n", "<leader>cw", "<cmd> set wrap! <cr>", { desc = "Screen wrap" })
+map("n", "<leader>cw", "<cmd> set wrap! <cr>", { desc = "Screen wrap" })
 
 -- Vim search
-vim.keymap.set("n", "<c-n>", "<cmd> nohlsearch <CR>", { desc = "Clear serach" })
+map("n", "<c-n>", "<cmd> nohlsearch <CR>", { desc = "Clear serach" })
 
 -- Vim replace
-vim.keymap.set("n", "<leader>sr", [[:%s/]], { desc = "Replace all" })
+map("n", "<leader>sr", [[:%s/]], { desc = "Replace all" })
 
 -- Vim redo
-vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
-vim.keymap.set("n", "<S-r>", "<nop>")
+map("n", "U", "<C-r>", { desc = "Redo" })
+map("n", "<S-r>", "<nop>")
 
 -- Stay in indent mode
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 
 -- Disable q: and make to :q
-vim.keymap.set("n", "q:", "<nop>")
-vim.keymap.set("n", "q:", "<cmd> q <cr>")
+map("n", "q:", "<nop>")
+map("n", "q:", "<cmd> q <cr>")
 
 -- Quick commands
-vim.keymap.set("n", "<leader><leader>", [[:! ]], { desc = "Run command" })
+map("n", "<leader><leader>", [[:! ]], { desc = "Run command" })
 
 -- Smart deletion from https://www.reddit.com/r/neovim/comments/1janrmf/smart_delete/
 local function smart_delete(key)
@@ -56,17 +59,20 @@ local keys = { "d", "dd", "x", "c", "s", "C", "S", "X" } -- Define a list of key
 
 -- Set keymaps for both normal and visual modes
 for _, key in pairs(keys) do
-    vim.keymap.set({ "n", "v" }, key, function()
+    map({ "n", "v" }, key, function()
         return smart_delete(key)
     end, { noremap = true, expr = true, desc = "Smart delete" })
 end
 
 -- Put current line above in comments
-vim.keymap.set("n", "<leader>ck", "m'yyPgcc`'", { remap = true, desc = "Current line commented it" })
+map("n", "<leader>ck", "m'yyPgcc`'", { remap = true, desc = "Current line commented it" })
+
+-- Paste on row bellow
+map("n", "<c-p>", "o<esc>p", { remap = true, desc = "Paste bellow" })
 
 -- Auto correct previous spelling mistake
-vim.keymap.set("i", "<c-s>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { remap = true, desc = "Correct previous spelling mistake" })
+map("i", "<c-s>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { remap = true, desc = "Correct previous spelling mistake" })
 
 -- Jump to tag and back
-vim.keymap.set('n', '<leader>o', '<C-]>', { silent = true, desc = "Jump to tag"} )
-vim.keymap.set('n', '<leader>O', '<C-t>', { silent = true, desc = "Jump to previous tag"} )
+map('n', '<leader>o', '<C-]>', { silent = true, desc = "Jump to tag"} )
+map('n', '<leader>O', '<C-t>', { silent = true, desc = "Jump to previous tag"} )
