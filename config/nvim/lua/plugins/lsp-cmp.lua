@@ -32,8 +32,8 @@ return {
 					end,
 				},
 				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
+					completion = { border = nil },
+					documentation = { border = nil },
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<Tab>"] = cmp.mapping.select_next_item(),
