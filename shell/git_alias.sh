@@ -9,3 +9,5 @@ alias main="git checkout main; git pull"
 # Make submodules better
 git config --global push.recurseSubmodules on-demand
 git config --global submodule.recurse true
+# main is main
+git config --global init.defaultBranch main
