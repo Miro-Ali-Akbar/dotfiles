@@ -90,3 +90,5 @@ local function toggle_indent()
 end
 
 map("n", "<leader>ct", toggle_indent, { desc = "Indent" })
+
+map("n", "<leader>lF", "m]gg=G`]", { desc = "Format indents" })
