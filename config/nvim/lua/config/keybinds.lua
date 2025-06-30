@@ -32,6 +32,9 @@ map("n", "<c-n>", "<cmd> nohlsearch <CR>", { desc = "Clear serach" })
 -- Vim replace
 map("n", "<leader>sr", [[:%s/]], { desc = "Replace all" })
 
+-- Override filetype
+map("n", "<leader>ft", [[:set filetype=]], { desc = "Force filetype" })
+
 -- Vim redo
 map("n", "U", "<C-r>", { desc = "Redo" })
 map("n", "<S-r>", "<nop>")

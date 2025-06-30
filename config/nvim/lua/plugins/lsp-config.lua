@@ -56,13 +56,13 @@ return {
 
 
 
-    vim.keymap.set("n", "<leader>lk", vim.lsp.buf.hover, { desc = "Hover" })
-    vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "Defenition" })
-    vim.keymap.set("n", "<leader>lr", code_references, { desc = "References" })
-    vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { desc = "Rename" })
-    vim.keymap.set({ "n", "v" }, "<leader>la", code_action, { desc = "Code action" })
+    vim.keymap.set("n", "<leader>lk", vim.lsp.buf.hover, { desc         = "Hover" })
+    vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc    = "Defenition" })
+    vim.keymap.set("n", "<leader>lr", code_references, { desc           = "References" })
+    vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { desc        = "Rename" })
+    vim.keymap.set({ "n", "v" }, "<leader>la", code_action, { desc      = "Code action" })
     vim.keymap.set("n", "<leader>lD", vim.diagnostic.open_float, { desc = "Diagnostic" })
-    vim.keymap.set("n", "<leader>lf", lsp_format, { desc = "Format", noremap = true, })
-    vim.keymap.set('n', '<leader>cl', lsp_toggle_diagnostic, { desc = "Lsp diagnostics" })
+    vim.keymap.set("n", "<leader>lf", lsp_format, { desc                = "Format", noremap = true, })
+    vim.keymap.set('n', '<leader>cl', lsp_toggle_diagnostic, { desc     = "Lsp diagnostics" })
   end
 }
