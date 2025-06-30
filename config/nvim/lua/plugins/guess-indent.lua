@@ -3,7 +3,7 @@ return {
     config = function()
         require('guess-indent').setup({
             filetype_exclude = {
-                "lua"
+                --"lua"
             }
         })
     end,
