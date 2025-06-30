@@ -5,6 +5,7 @@ return {
       keymaps = {
         ["q"] = { "actions.close", mode = "n" },
         ["<tab>"] = { "actions.close", mode = "n" },
+        ["<esc>"] = { "actions.close", mode = "n" },
       },
       float = {
         max_width = 0.8,
