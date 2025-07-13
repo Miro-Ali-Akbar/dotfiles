@@ -1,54 +1,62 @@
+local option = vim.opt
 -- Makes tabs be good and sets indent_space
 vim.g.Indent_space = 4
-vim.opt.expandtab = true
-vim.opt.tabstop = vim.g.Indent_space
-vim.opt.softtabstop = vim.g.Indent_space
-vim.opt.shiftwidth = vim.g.Indent_space
+option.expandtab = true
+option.smartindent = true
+option.autoindent = true
+option.tabstop = vim.g.Indent_space
+option.softtabstop = vim.g.Indent_space
+option.shiftwidth = vim.g.Indent_space
 
 -- Sets row number in gutter
-vim.opt.number = true
-vim.opt.numberwidth = 3
+option.number = true
+option.signcolumn = "yes"
+option.numberwidth = 3
 
 -- Sets clipboard
-vim.opt.clipboard = "unnamedplus"
+option.clipboard = "unnamedplus"
 
 -- Makes text wrap be based on words
-vim.opt.wrap = true
-vim.opt.linebreak = true
-vim.opt.breakindent = true
-
--- Adds space for gutter
-vim.opt.signcolumn = "yes"
+option.wrap = true
+option.linebreak = true
+option.breakindent = true
 
 -- Sets buffer for cursor between border as scroll_of_buffer
-vim.opt.scrolloff = 5
+option.scrolloff = 5
 
 -- Vim search to be case sensitive when relevant
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+option.ignorecase = true
+option.smartcase = true
 
 -- Vim replace - Becomes responsive
-vim.opt.inccommand = "nosplit"
+option.inccommand = "nosplit"
 
 -- Makes nvim faster somehow?
 vim.loader.enable()
 
 -- Persistent undo
-vim.opt.undofile = true
+option.undofile = true
 
 -- Mouse = good TODO: More
-vim.opt.mouse = "a"
+option.mouse = "a"
 
 -- spell 
-vim.opt.spelllang = "en_us,sv"
-vim.opt.spell = true
-vim.opt.spelloptions = "camel"
+option.spelllang = "en_us,sv"
+option.spell = true
+option.spelloptions = "camel"
+option.iskeyword:append("-")
 
 -- Conceal for better markdown and tex
-vim.opt.conceallevel = 2
+option.conceallevel = 2
 
 -- Folds
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldlevelstart = 99
-vim.opt.foldtext = ""
+option.foldmethod = "expr"
+option.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+option.foldlevelstart = 99
+option.foldtext = ""
+
+-- Auto read files
+option.autoread = true
+
+-- Block selections ignore end of words
+option.virtualedit="block"

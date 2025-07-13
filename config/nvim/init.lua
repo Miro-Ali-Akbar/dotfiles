@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("config/settings")
 require("config/keybinds")
+require("config/scripts")
 
 local plugin_specs = {
   { import = "plugins" },
