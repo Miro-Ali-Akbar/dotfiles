@@ -50,6 +50,9 @@ map("n", "q:", "<cmd> q <cr>")
 -- Quick commands
 map("n", "<leader><leader>", [[:! ]], { desc = "Run command" })
 
+-- Force filetype
+map("n", "<leader>cf", [[:set filetype=]], { desc = "Set filetype" })
+
 -- Put current line above in comments
 map("n", "<leader>ck", "m'yyPgcc`'", { remap = true, desc = "Current line commented it" })
 
@@ -81,5 +84,6 @@ local function format_indents()
     local pos = vim.api.nvim_win_get_cursor(0)
     vim.cmd("silent keepjumps normal! gg=G")
     vim.api.nvim_win_set_cursor(0, pos)
+    vim.notify("Indented file according to indenet space " .. vim.g.Indent_space, vim.log.levels.INFO)
 end
 map("n", "<leader>lF", format_indents, { desc = "Format indents" })
