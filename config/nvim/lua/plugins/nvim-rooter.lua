@@ -1,10 +1,9 @@
 return {
     lazy = false,
     "notjedi/nvim-rooter.lua",
-    dependencies = {
-        "nvim-tree/nvim-tree.lua",
-    },
     config = function()
-        require "nvim-rooter".setup()
+        require "nvim-rooter".setup({
+            exclude_filetypes = { "man", "troff" }
+        })
     end
 }
