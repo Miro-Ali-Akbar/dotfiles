@@ -42,7 +42,7 @@ return {
     local code_references = require("snacks").picker.lsp_references
 
     require("mason-lspconfig").setup({
-      ensure_installed = { "lua_ls", "clangd", "ts_ls", "bashls", "pyright" },
+      ensure_installed = { "lua_ls", "clangd", "ts_ls", "bashls", "pyright", "texlab" },
       automatic_installation = true,
     })
 
