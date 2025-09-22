@@ -35,6 +35,9 @@ map("n", "<leader>sr", [[:%s/]], { desc = "Replace all" })
 -- Override filetype
 map("n", "<leader>ft", [[:set filetype=]], { desc = "Force filetype" })
 
+-- Force filetype
+map("n", "<leader>cf", [[:set filetype=]], { desc = "Set filetype" })
+
 -- Vim redo
 map("n", "U", "<C-r>", { desc = "Redo" })
 map("n", "<S-r>", "<nop>")
@@ -50,8 +53,8 @@ map("n", "q:", "<cmd> q <cr>")
 -- Quick commands
 map("n", "<leader><leader>", [[:! ]], { desc = "Run command" })
 
--- Force filetype
-map("n", "<leader>cf", [[:set filetype=]], { desc = "Set filetype" })
+-- Go to normal mode terminal
+map('t', '<esc>', [[<C-\><C-n>]])
 
 -- Put current line above in comments
 map("n", "<leader>ck", "m'yyPgcc`'", { remap = true, desc = "Current line commented it" })
@@ -79,6 +82,14 @@ local function toggle_indent()
     vim.notify("Set indent space to: " .. vim.g.Indent_space, vim.log.levels.INFO)
 end
 map("n", "<leader>ct", toggle_indent, { desc = "Indent" })
+
+-- Toggle tab
+local function toggle_tab()
+    vim.cmd("set expandtab!")
+    vim.cmd("retab")
+    vim.notify("Toggled tabs", vim.log.levels.INFO)
+end
+map("n", "<leader>cT", toggle_tab, { desc = "Set to Tab" })
 
 local function format_indents()
     local pos = vim.api.nvim_win_get_cursor(0)
