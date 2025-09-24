@@ -12,6 +12,7 @@ PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;31m\]\w$(__git_ps1 " \[\033[01;32m\
 # Alias
 alias ..="cd .."
 alias cl="clear"
+alias REPL="NVIM_REPL=1 nvim"
 
 # manpage highlighter
 # export MANPAGER="less -R --use-color -Dd+r -Du+b"
