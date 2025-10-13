@@ -50,10 +50,10 @@ option.iskeyword:append("-")
 option.conceallevel = 2
 
 -- Folds
-option.foldmethod = "expr"
-option.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-option.foldlevelstart = 99
-option.foldtext = ""
+-- option.foldmethod = "expr"
+-- option.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- option.foldlevelstart = 99
+-- option.foldtext = ""
 
 -- Auto read files
 option.autoread = true

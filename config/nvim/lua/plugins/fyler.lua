@@ -6,7 +6,7 @@ return {
       icon_provider = function()
         return ""
       end,
-      git_status = false,
+      git_status = { enabled = false },
       views = {
         confirm = {
           win = {
@@ -38,6 +38,6 @@ return {
         confirm_simple = true,
       },
     })
-    vim.keymap.set("n", "<leader>e", "<cmd>Fyler<cr>", { desc = "Fyler" })
+    vim.keymap.set("n", "<leader>e", "<cmd>Fyler kind=float<cr>", { desc = "Fyler" })
   end,
 }
