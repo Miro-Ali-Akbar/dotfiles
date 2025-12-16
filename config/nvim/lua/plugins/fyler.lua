@@ -5,6 +5,11 @@ return {
     branch = "stable",
     config = function()
         require("fyler").setup({
+            hooks = {
+                on_rename = function(src_path, destination_path)
+                    Snacks.rename.on_rename_file(src_path, destination_path)
+                end,
+            },
             integrations = {
                 icon = "none",
                 -- winpick = "snacks",
