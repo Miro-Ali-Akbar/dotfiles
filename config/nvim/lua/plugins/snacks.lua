@@ -78,8 +78,8 @@ return {
         { section = "startup" },
       },
     },
-    scroll = {enabled = true,},
-    rename ={enabled = true,},
+    scroll = { enabled = true, },
+    rename = { enabled = true, },
     picker = {
       layout = layout,
       win = {
