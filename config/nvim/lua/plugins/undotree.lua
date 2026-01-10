@@ -1,15 +1,11 @@
 return {
-    "jiaoshijie/undotree",
-    keys = {
-        { "<leader>u", nil, desc = "Undotree" }
-    },
-    dependencies = "nvim-lua/plenary.nvim",
-    config = function()
-        require('undotree').setup({
-            keymaps = {
-                ['<ESC>'] = "quit"
-            }
-        })
-        vim.keymap.set("n", "<leader>u", require('undotree').toggle, { desc = "Undotree" })
-    end,
+  "jiaoshijie/undotree",
+  ---@module 'undotree.collector'
+  ---@type UndoTreeCollector.Opts
+  opts = {
+    -- your options
+  },
+  keys = { -- load the plugin only when using it's keybinding:
+    { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+  },
 }

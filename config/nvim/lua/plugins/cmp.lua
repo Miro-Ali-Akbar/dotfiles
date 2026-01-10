@@ -52,7 +52,7 @@ return {
             }
           },
           latex = {
-            name = "Latex",
+            name = "latex",
             module = "blink-cmp-latex",
             opts = {
               -- set to true to insert the latex command instead of the symbol
@@ -60,7 +60,7 @@ return {
             },
           },
           lazydev = {
-            name = "LazyDev",
+            name = "lazyDev",
             module = "lazydev.integrations.blink",
             -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
@@ -69,7 +69,7 @@ return {
             max_items = 3,
           },
           spell = {
-            name = 'Spell',
+            name = 'spell',
             module = 'blink-cmp-spell',
             async = true,
             opts = {

@@ -1,9 +1,9 @@
 return {
     lazy = false,
-    "notjedi/nvim-rooter.lua",
+    'wsdjeg/rooter.nvim',
     config = function()
-        require "nvim-rooter".setup({
-            exclude_filetypes = { "man", "troff" }
+        require('rooter').setup({
+            root_pattern = { '.git/' },
         })
-    end
+    end,
 }

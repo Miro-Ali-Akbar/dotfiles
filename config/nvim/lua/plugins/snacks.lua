@@ -101,5 +101,6 @@ return {
     { "<leader>fI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
     { "<leader>fp", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
     { "<leader>fP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
+    { "<leader>cb", function() Snacks.git.blame_line() end, desc = "Git Blame" },
   },
 }
