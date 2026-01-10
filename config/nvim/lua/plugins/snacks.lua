@@ -96,5 +96,10 @@ return {
   keys = {
     { "<leader>ff", function() Snacks.picker.smart() end, desc = "Files" },
     { "<leader>fw", function() Snacks.picker.grep() end,  desc = "Words" },
+
+    { "<leader>fi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues (open)" },
+    { "<leader>fI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
+    { "<leader>fp", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
+    { "<leader>fP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
   },
 }
