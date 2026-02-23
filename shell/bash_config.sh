@@ -4,11 +4,28 @@
 shopt -s autocd
 
 # Promt
-ErrorCodeColor() {
-    [[ $? != 0 ]] && printf '\033[01;31m'
+# PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;31m\]\w$(__git_ps1 " \[\033[01;32m\](%s)\[\033[00m\] ")$([[ $? != 0 ]] && echo "\[\033[01;31m\]|Error|\[\033[00m\]")\[\033[00m\]:> '
+
+GREEN="\[\e[01;32m\]"
+RED="\[\e[01;31m\]"
+RESET="\[\e[00m\]"
+
+build_prompt() {
+    local EXIT="$?"
+    # PS1="\n${GREEN}\u${RESET}:"
+    PS1="${GREEN}\u${RESET}:"
+    PS1+="${RED}\w${RESET}"
+
+    PS1+="$(__git_ps1 " ${GREEN}(%s)${RESET}")"
+
+    if [ $EXIT -ne 0 ]; then
+        PS1+="${RED}|Error: $EXIT|${RESET}"
+    fi
+
+    PS1+=":> "
 }
-# PS1='\[\033[01;32m\]$(ErrorCodeColor)\u\e[0m:\[\033[01;31m\]$(ErrorCodeColor)\w$(__git_ps1 " \[\033[01;32m\]$(ErrorCodeColor)(%s) ")\e[0m:> '
-PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;31m\]\w$(__git_ps1 " \[\033[01;32m\](%s)\[\033[00m\] ")$([[ $? != 0 ]] && echo "\[\033[01;31m\]|Error|\[\033[00m\]")\[\033[00m\]:> '
+PROMPT_COMMAND=build_prompt
+
 # Alias
 alias ..="cd .."
 alias cl="clear"
