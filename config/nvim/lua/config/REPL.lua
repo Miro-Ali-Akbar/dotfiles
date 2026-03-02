@@ -85,32 +85,4 @@ return {
       vim.g.molten_output_win_max_height = 40
     end,
   },
-  {
-    lazy = false,
-    enabled = false,
-    'Thiago4532/mdmath.nvim',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-    },
-    opts = { ... }
-
-    -- The build is already done by default in lazy.nvim, so you don't need
-    -- the next line, but you can use the command `:MdMath build` to rebuild
-    -- if the build fails for some reason.
-    -- build = ':MdMath build'
-  },
-  {
-    enabled = true,
-    "jbyuki/nabla.nvim",
-    keys = {
-      { "<leader>cn", nil, desc = "Start inline latex math" },
-      { "<leader>rn", nil, desc = "Popup latex math" },
-      { "<leader>rs", nil, },
-    },
-    init = function()
-      vim.keymap.set("n", "<leader>cn", "<cmd> lua require(\"nabla\").toggle_virt() <cr>",
-        { desc = "Start inline latex math" })
-      vim.keymap.set("n", "<leader>rn", "<cmd> lua require(\"nabla\").popup() <cr>", { desc = "Popup latex math" })
-    end,
-  },
 }

@@ -47,7 +47,15 @@ option.spelloptions = "camel"
 option.iskeyword:append("-")
 
 -- Conceal for better markdown and tex
-option.conceallevel = 2
+local math_conceal_group = vim.api.nvim_create_augroup("MathConceal", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = math_conceal_group,
+  pattern = { "markdown", "tex", "latex" },
+  callback = function()
+    vim.opt_local.conceallevel = 3
+  end,
+})
 
 -- Folds
 -- option.foldmethod = "expr"
@@ -59,4 +67,4 @@ option.conceallevel = 2
 option.autoread = true
 
 -- Block selections ignore end of words
-option.virtualedit="block"
+option.virtualedit = "block"
