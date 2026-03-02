@@ -40,7 +40,7 @@ option.undofile = true
 -- Mouse = good TODO: More
 option.mouse = "a"
 
--- spell 
+-- spell
 option.spelllang = "en_us,sv"
 option.spell = true
 option.spelloptions = "camel"

@@ -30,6 +30,7 @@ PROMPT_COMMAND=build_prompt
 alias ..="cd .."
 alias cl="clear"
 alias REPL="NVIM_REPL=1 nvim"
+eval "$(fzf --bash)"
 
 # manpage highlighter
 # export MANPAGER="less -R --use-color -Dd+r -Du+b"
