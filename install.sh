@@ -35,8 +35,8 @@ function ask() {
         response_lc=$(echo "$resp" | tr '[:upper:]' '[:lower:]') # case insensitive
     fi
 
-    if [ "$response_lc" = "y" ]; then 
-        echo 0 
+    if [ "$response_lc" = "y" ]; then
+        echo 0
     else
         echo 1
     fi
@@ -56,7 +56,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add nvim settings?") -eq 0 ]]; then
     echo -e "${GREEN}Installing nvim config${RESET_FONT}"
     nvimlink=$(readlink ~/.config/nvim)
     nvimfolder=$(pwd)/config/nvim
-    if [[ -z $nvimlink ]] || [[ ! $nvimlink == $nvimfolder ]]; then 
+    if [[ -z $nvimlink ]] || [[ ! $nvimlink == $nvimfolder ]]; then
         if [ -e ~/.config/nvim ]; then
             if [ -L ~/.config/nvim ]; then
                 echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
@@ -89,7 +89,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add alacritty settings?") -eq 0 ]]; t
     echo -e "${GREEN}Installing alacritty config${RESET_FONT}"
     alacrittylink=$(readlink $HOME/.config/alacritty)
     alacrittyfolder=$(pwd)/config/alacritty
-    if [[ -z $alacrittylink ]] || [[ ! $alacrittylink == $alacrittyfolder ]]; then 
+    if [[ -z $alacrittylink ]] || [[ ! $alacrittylink == $alacrittyfolder ]]; then
         if [ -e ~/.config/alacritty ]; then
             if [ -L ~/.config/alacritty ]; then
                 echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
@@ -105,6 +105,29 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add alacritty settings?") -eq 0 ]]; t
     fi
 fi
 
+# ----------
+# Alacritty
+# ----------
+if [[ $do_everything -eq 0 ]] || [[ $(ask "Add kitty settings?") -eq 0 ]]; then
+    echo -e "${GREEN}Installing kitty config${RESET_FONT}"
+    kittylink=$(readlink $HOME/.config/kitty)
+    kittyfolder=$(pwd)/config/kitty
+    if [[ -z $kittylink ]] || [[ ! $kittylink == $kittyfolder ]]; then
+        if [ -e ~/.config/kitty ]; then
+            if [ -L ~/.config/kitty ]; then
+                echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
+            else
+                echo -e "${YELLOW}\t Found /kitty folder - creating backup${RESET_FONT}"
+                mv $HOME/.config/kitty/ $HOME/.config/kitty.bak
+            fi
+        fi
+        echo -e "${YELLOW}\t Placing symbolic link${RESET_FONT}"
+        ln -sf $kittyfolder $HOME/.config/
+    else
+        echo -e "${GREEN}Kitty already configured${RESET_FONT}"
+    fi
+fi
+
 # --------
 # Zathura
 # --------
@@ -112,7 +135,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add Zathura settings?") -eq 0 ]]; the
     echo -e "${GREEN}Installing Zathura config${RESET_FONT}"
     zathuralink=$(readlink $HOME/.config/zathura)
     zathurafolder=$(pwd)/config/zathura
-    if [[ -z $zathuralink ]] || [[ ! $zathuralink == $zathurafolder ]]; then 
+    if [[ -z $zathuralink ]] || [[ ! $zathuralink == $zathurafolder ]]; then
         if [ -e ~/.config/zathura ]; then
             if [ -L ~/.config/zathura ]; then
                 echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
@@ -131,7 +154,7 @@ fi
 # ----------------
 # Shell shortcuts
 # ----------------
-if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
+if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") -eq 0 ]]; then
     echo -e "${GREEN}\e[4mInstalling shell shortcuts${RESET_FONT}"
 
     # --------
@@ -140,9 +163,9 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     echo -e "${GREEN}Sourcing input.rc${RESET_FONT}"
     inputrc_path="$(pwd)/shell/inputrc.sh"
     # Include inputrc if it does not exists already in ~/
-    if [ ! -e ~/.inputrc ]; then 
+    if [ ! -e ~/.inputrc ]; then
         echo -e "${YELLOW}\t Creating local ~/inputrc from etc/inputrc${RESET_FONT}"
-        echo '$include /etc/inputrc' > ~/.inputrc; 
+        echo '$include /etc/inputrc' > ~/.inputrc;
     fi
     if ! grep -q dotfiles ~/.inputrc; then
         echo "# Inputrc config provided by dotfiles located in $(pwd)" >> ~/.inputrc
@@ -181,7 +204,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     echo -e "${GREEN}Sourcing git config folder${RESET_FONT}"
     git_config_folder=$(pwd)/config/git
     git_config_link=$(readlink $HOME/.config/git)
-    if [[ -z $git_config_link ]] || [[ ! $git_config_link == $git_config_folder ]]; then 
+    if [[ -z $git_config_link ]] || [[ ! $git_config_link == $git_config_folder ]]; then
         if [ -e ~/.config/git ]; then
             if [ -L ~/.config/git ]; then
                 echo -e "${YELLOW}\t Overriding symbolic link${RESET_FONT}"
@@ -213,7 +236,7 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") ]]; then
     else
         echo -e "${RED}\t Error dependencies not met${RESET_FONT}"
     fi
-fi 
+fi
 
 
 # -------

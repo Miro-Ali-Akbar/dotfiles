@@ -22,7 +22,22 @@ return {
                 treesitter_context = true,
                 which_key = true,
             },
+            styles = {
+                errors      = { "underline" },
+                warnings    = { "underline" },
+                hints       = { "underline" },
+                information = { "underline" },
+            },
         })
         vim.cmd.colorscheme "catppuccin"
+
+        local spell_groups = { "SpellBad", "SpellCap", "SpellRare", "SpellLocal" }
+
+        for _, group in ipairs(spell_groups) do
+            vim.api.nvim_set_hl(0, group, {
+                undercurl = false,
+                underline = true,
+            })
+        end
     end
 }
