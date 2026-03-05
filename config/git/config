@@ -7,9 +7,6 @@
     whitespace = error
     preloadindex = true
 
-[url "https://github.com/Miro-Ali-Akbar/"]
-    insteadOf = "miro:"
-
 [alias]
     undo = reset --soft HEAD^
 
@@ -21,16 +18,41 @@
     context = 3
     renames = copies
     interHunkContext = 10
+    conflictstyle = diff3
 
 [push]
-    autoSetupRemote = true
+    autosetupremote = true
     default = current
+    recursesubmodules = on-demand
+    followtags = true
 
 [pull]
     default = current
+    rebase = true
+
+[fetch]
+    prune = true
 
 [log]
     abbrevCommit = true
 
 [advice]
     statusHints = false
+
+[init]
+    defaultbranch = main
+
+[submodule]
+    recurse = true
+
+[url "https://github.com/Miro-Ali-Akbar/"]
+
+    insteadOf = "miro:"
+
+[credential "https://github.com"]
+    helper =
+    helper = !/usr/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+    helper =
+    helper = !/usr/bin/gh auth git-credential
