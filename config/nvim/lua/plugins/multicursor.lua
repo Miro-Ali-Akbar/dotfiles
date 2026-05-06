@@ -1,0 +1,68 @@
+return {
+    "jake-stewart/multicursor.nvim",
+    branch = "1.0",
+    config = function()
+        local mc = require("multicursor-nvim")
+        mc.setup()
+
+        local set = vim.keymap.set
+
+        -- Drop a cursor, freeze extra cursors, and move main cursor down
+        set({ "n", "x" }, "<leader>j", function()
+            mc.toggleCursor()
+            mc.disableCursors()
+            vim.cmd("normal! j")
+        end)
+
+        -- Drop a cursor, freeze extra cursors, and move main cursor up
+        set({ "n", "x" }, "<leader>k", function()
+            mc.toggleCursor()
+            mc.disableCursors()
+            vim.cmd("normal! k")
+        end)
+
+        -- Drop a cursor at current position AND toggle movement tracking
+        set({ "n", "x" }, "<c-n>", function()
+            mc.toggleCursor()
+            if mc.cursorsEnabled() then
+                mc.disableCursors()
+            else
+                mc.enableCursors()
+            end
+        end)
+
+        -- Add and remove cursors with control + left click.
+        set("n", "<c-leftmouse>", mc.handleMouse)
+        set("n", "<c-leftdrag>", mc.handleMouseDrag)
+        set("n", "<c-leftrelease>", mc.handleMouseRelease)
+
+        -- Mappings defined in a keymap layer only apply when there are
+        -- multiple cursors. This lets you have overlapping mappings.
+        mc.addKeymapLayer(function(layerSet)
+            -- Select a different cursor as the main one.
+            layerSet({ "n", "x" }, "<left>", mc.prevCursor)
+            layerSet({ "n", "x" }, "<right>", mc.nextCursor)
+
+            -- Align cursor columns.
+            set("n", "<leader>a", mc.alignCursors)
+
+            -- Delete the main cursor.
+            layerSet({ "n", "x" }, "<leader>x", mc.deleteCursor)
+
+            -- Clear cursors using escape.
+            layerSet("n", "<esc>", function()
+                mc.clearCursors()
+            end)
+        end)
+
+        -- Customize how cursors look.
+        local hl = vim.api.nvim_set_hl
+        hl(0, "MultiCursorCursor", { reverse = true })
+        hl(0, "MultiCursorVisual", { link = "Visual" })
+        hl(0, "MultiCursorSign", { link = "SignColumn" })
+        hl(0, "MultiCursorMatchPreview", { link = "Search" })
+        hl(0, "MultiCursorDisabledCursor", { reverse = true })
+        hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
+        hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
+    end
+}

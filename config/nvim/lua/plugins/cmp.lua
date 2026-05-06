@@ -2,6 +2,7 @@ return {
   {
     "saghen/blink.cmp",
     event = "InsertEnter",
+    version = "v1.*",
     dependencies = {
       "rafamadriz/friendly-snippets",
       "ribru17/blink-cmp-spell",
@@ -108,7 +109,7 @@ return {
   {
     'saghen/blink.pairs',
     event = "InsertEnter",
-    version = '*', -- (recommended) only required with prebuilt binaries
+    version = '*',
 
     dependencies = { 'saghen/blink.download' },
 

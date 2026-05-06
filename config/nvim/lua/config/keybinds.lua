@@ -98,3 +98,6 @@ local function format_indents()
     vim.notify("Indented file according to indenet space " .. vim.g.Indent_space, vim.log.levels.INFO)
 end
 map("n", "<leader>lF", format_indents, { desc = "Format indents" })
+
+-- Convert long bash to multiline
+vim.keymap.set('n', [[<leader>\]], [[:.s/ -/ \\\r  -/g<cr>:noh<cr>]], { silent = true, desc = 'Break long command line' })
