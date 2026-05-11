@@ -31,6 +31,7 @@ alias ..="cd .."
 alias cl="clear"
 alias REPL="NVIM_REPL=1 nvim"
 eval "$(fzf --bash)"
+export EDITOR=nvim
 
 # manpage highlighter
 # export MANPAGER="less -R --use-color -Dd+r -Du+b"

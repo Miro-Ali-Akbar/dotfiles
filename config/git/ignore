@@ -3,3 +3,4 @@ node_modules/
 .env
 vimtex_aux
 *.synctex.gz
+.claude/
