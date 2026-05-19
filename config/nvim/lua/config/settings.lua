@@ -1,6 +1,6 @@
 local option = vim.opt
 -- Makes tabs be good and sets indent_space
-vim.g.Indent_space = 4
+vim.g.Indent_space = 2
 option.expandtab = true
 option.smartindent = true
 option.autoindent = true

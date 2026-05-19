@@ -8,7 +8,6 @@ return {
         local wk = require("which-key")
         wk.add({
                 { "<leader>c",  group = "Toggle" },
-                { "<leader>ca", group = "Cellular Automaton" },
                 { "<leader>f",  group = "Files" },
                 { "<leader>l",  group = "LSP" },
                 { "<leader>s",  group = "Search" },
