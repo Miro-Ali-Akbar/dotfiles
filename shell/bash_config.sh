@@ -30,6 +30,7 @@ PROMPT_COMMAND=build_prompt
 alias ..="cd .."
 alias cl="clear"
 alias REPL="NVIM_REPL=1 nvim"
+alias nosleep='systemd-inhibit --what=handle-lid-switch:sleep:idle --why="no sleep" sleep infinity'
 eval "$(fzf --bash)"
 export EDITOR=nvim
 
