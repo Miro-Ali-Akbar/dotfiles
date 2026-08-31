@@ -46,6 +46,15 @@ return {
       automatic_installation = true,
     })
 
+    -- Devkitpro
+    vim.lsp.config("clangd", {
+      cmd = {
+        "clangd",
+        "--background-index",
+        "--query-driver=/opt/devkitpro/devkit*/bin/*-gcc,/opt/devkitpro/devkit*/bin/*-g++"
+      }
+    })
+
     vim.diagnostic.config({ virtual_text = true, })
 
     local function lsp_toggle_diagnostic()
