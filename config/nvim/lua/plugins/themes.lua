@@ -6,7 +6,7 @@ return {
     config = function()
         require("catppuccin").setup({
             integrations = {
-                cmp = true,
+                blink_cmp = true,
                 fidget = true,
                 gitsigns = true,
                 illuminate = true,

@@ -4,3 +4,5 @@ node_modules/
 vimtex_aux
 *.synctex.gz
 .claude/
+
+**/.claude/settings.local.json

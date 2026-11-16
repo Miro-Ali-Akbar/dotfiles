@@ -42,8 +42,7 @@ return {
     local code_references = require("snacks").picker.lsp_references
 
     require("mason-lspconfig").setup({
-      ensure_installed = { "lua_ls", "clangd", "ts_ls", "bashls", "pyright", "texlab" },
-      automatic_installation = true,
+      ensure_installed = { "lua_ls", "clangd", "ts_ls", "bashls", "pyright", "texlab", "rust_analyzer" },
     })
 
     -- Devkitpro
@@ -53,6 +52,11 @@ return {
         "--background-index",
         "--query-driver=/opt/devkitpro/devkit*/bin/*-gcc,/opt/devkitpro/devkit*/bin/*-g++"
       }
+    })
+
+    -- Let nvim watch files so rust-analyzer skips its own watcher
+    vim.lsp.config("rust_analyzer", {
+      capabilities = { workspace = { didChangeWatchedFiles = { dynamicRegistration = true } } },
     })
 
     vim.diagnostic.config({ virtual_text = true, })

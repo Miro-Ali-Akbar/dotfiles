@@ -30,6 +30,7 @@ PROMPT_COMMAND=build_prompt
 alias ..="cd .."
 alias cl="clear"
 alias REPL="NVIM_REPL=1 nvim"
+alias TEX="NVIM_TEX=1 nvim"
 alias nosleep='systemd-inhibit --what=handle-lid-switch:sleep:idle --why="no sleep" sleep infinity'
 eval "$(fzf --bash)"
 export EDITOR=nvim
@@ -41,3 +42,31 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
+
+# Keep $HOME clean: point apps at XDG dirs (see xdg-ninja)
+export HISTFILE="$XDG_STATE_HOME"/bash/history
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+export XCURSOR_PATH=/usr/share/icons:"$XDG_DATA_HOME"/icons
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
+export NODE_REPL_HISTORY="$XDG_STATE_HOME"/node_repl_history
+export PYTHON_HISTORY="$XDG_STATE_HOME"/python/history
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
+export WINEPREFIX="$XDG_DATA_HOME"/wine
+export BOTO_CONFIG="$XDG_CONFIG_HOME"/boto/config
+export ASYMPTOTE_HOME="$XDG_CONFIG_HOME"/asy
+export NXC_PATH="$XDG_CONFIG_HOME"/nxc
+export CODEX_HOME="$XDG_DATA_HOME"/codex
+export UFBT_HOME="$XDG_DATA_HOME"/ufbt
+export KUBECONFIG="$XDG_CONFIG_HOME"/kube/config
+export KUBECACHEDIR="$XDG_CACHE_HOME"/kube
+# Claude Code: only once ~/.claude has been migrated to the XDG location
+if [ -d "$XDG_CONFIG_HOME"/claude ]; then
+    export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME"/claude
+fi
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup

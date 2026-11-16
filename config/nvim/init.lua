@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -21,6 +21,10 @@ local plugin_specs = {
 
 if vim.env.NVIM_REPL == "1" then
   table.insert(plugin_specs, { import = "config/REPL" })
+end
+
+if vim.env.NVIM_TEX == "1" then
+  table.insert(plugin_specs, { import = "config/TEX" })
 end
 
 require("lazy").setup(plugin_specs)

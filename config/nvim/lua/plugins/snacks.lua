@@ -101,9 +101,35 @@ return {
 
     },
   },
+  config = function(_, opts)
+    require("snacks").setup(opts)
+    -- Inline images are off until toggled with <leader>ci
+    vim.g.snacks_images = false
+    local inline = require("snacks.image.inline")
+    local update = inline.update
+    inline.update = function(self)
+      if vim.g.snacks_images then update(self) end
+    end
+  end,
   keys = {
+    {
+      "<leader>ci",
+      function()
+        vim.g.snacks_images = not vim.g.snacks_images
+        if vim.g.snacks_images then
+          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            pcall(vim.api.nvim_exec_autocmds, "WinScrolled", { group = "snacks.image.inline." .. buf, buffer = buf })
+          end
+        else
+          Snacks.image.placement.clean()
+        end
+        vim.notify("Images " .. (vim.g.snacks_images and "on" or "off"))
+      end,
+      desc = "Images",
+    },
     { "<leader>ff", function() Snacks.picker.smart() end,                     desc = "Files" },
     { "<leader>fw", function() Snacks.picker.grep() end,                      desc = "Words" },
+    { "<leader>v",  function() Snacks.picker.yanky() end,                     desc = "Yank history" },
 
     { "<leader>fi", function() Snacks.picker.gh_issue() end,                  desc = "GitHub Issues (open)" },
     { "<leader>fI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },

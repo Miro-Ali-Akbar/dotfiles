@@ -68,3 +68,8 @@ option.autoread = true
 
 -- Block selections ignore end of words
 option.virtualedit = "block"
+
+-- New messages and cmdline UI (experimental)
+if vim.fn.has("nvim-0.12") == 1 then
+  require("vim._core.ui2").enable()
+end

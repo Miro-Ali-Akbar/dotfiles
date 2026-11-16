@@ -23,7 +23,7 @@
 [push]
     autosetupremote = true
     default = current
-    recursesubmodules = on-demand
+	recurseSubmodules = on-demand
     followtags = true
 
 [pull]
@@ -40,10 +40,11 @@
     statusHints = false
 
 [init]
-    defaultbranch = main
+	defaultBranch = main
 
 [submodule]
-    recurse = true
+	recurse = true
+	fetchJobs = 10
 
 [url "https://github.com/Miro-Ali-Akbar/"]
 

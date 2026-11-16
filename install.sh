@@ -162,14 +162,16 @@ if [[ $do_everything -eq 0 ]] || [[ $(ask "Add shell shortcuts?") -eq 0 ]]; then
     # --------
     echo -e "${GREEN}Sourcing input.rc${RESET_FONT}"
     inputrc_path="$(pwd)/shell/inputrc.sh"
-    # Include inputrc if it does not exists already in ~/
-    if [ ! -e ~/.inputrc ]; then
-        echo -e "${YELLOW}\t Creating local ~/inputrc from etc/inputrc${RESET_FONT}"
-        echo '$include /etc/inputrc' > ~/.inputrc;
+    inputrc_file="${XDG_CONFIG_HOME:-$HOME/.config}/readline/inputrc"
+    mkdir -p "$(dirname "$inputrc_file")"
+    # Include inputrc if it does not exists already
+    if [ ! -e "$inputrc_file" ]; then
+        echo -e "${YELLOW}\t Creating local $inputrc_file from etc/inputrc${RESET_FONT}"
+        echo '$include /etc/inputrc' > "$inputrc_file";
     fi
-    if ! grep -q dotfiles ~/.inputrc; then
-        echo "# Inputrc config provided by dotfiles located in $(pwd)" >> ~/.inputrc
-        echo "\$include $inputrc_path" >> ~/.inputrc
+    if ! grep -q dotfiles "$inputrc_file"; then
+        echo "# Inputrc config provided by dotfiles located in $(pwd)" >> "$inputrc_file"
+        echo "\$include $inputrc_path" >> "$inputrc_file"
         echo -e "${YELLOW}\t Inputrc config done${RESET_FONT}"
     else
         echo -e "${GREEN}Inputrc config already sourced${RESET_FONT}"

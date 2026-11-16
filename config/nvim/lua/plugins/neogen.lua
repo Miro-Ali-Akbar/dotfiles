@@ -5,7 +5,7 @@ return {
     },
     config = function()
         require("neogen").setup({
-            snippet_engine = "luasnip",
+            snippet_engine = "nvim",
         })
         vim.keymap.set("n", "<leader>lm", "<cmd> Neogen class <cr>", { desc = "Neogen annotation" })
     end,
